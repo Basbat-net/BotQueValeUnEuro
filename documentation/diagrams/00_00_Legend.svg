@@ -1,0 +1,212 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1420pt" height="483pt" viewBox="0.00 0.00 1420.20 482.80">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(21.6 461.2)">
+<title>LegendSheet</title>
+<polygon fill="white" stroke="none" points="-21.6,21.6 -21.6,-461.2 1398.6,-461.2 1398.6,21.6 -21.6,21.6"/>
+<text text-anchor="middle" x="688.5" y="-423.9" font-family="Helvetica,Arial,sans-serif" font-size="13.00">[00_Legend] Eurobot 2027 FSM - Symbology, Connector Grammar &amp; Nomenclature Guide</text>
+<g id="clust1" class="cluster">
+<title>cluster_archetypes</title>
+<path fill="#f8fafc" stroke="#475569" stroke-dasharray="5,2" d="M20,-25.7C20,-25.7 535,-25.7 535,-25.7 541,-25.7 547,-31.7 547,-37.7 547,-37.7 547,-377.8 547,-377.8 547,-383.8 541,-389.8 535,-389.8 535,-389.8 20,-389.8 20,-389.8 14,-389.8 8,-383.8 8,-377.8 8,-377.8 8,-37.7 8,-37.7 8,-31.7 14,-25.7 20,-25.7"/>
+<text text-anchor="middle" x="277.5" y="-376.35" font-family="Helvetica,Arial,sans-serif" font-size="10.50">1. State &amp; Node Visual Archetypes</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_connectors</title>
+<path fill="#f8fafc" stroke="#475569" stroke-dasharray="5,2" d="M569,-38.5C569,-38.5 1021,-38.5 1021,-38.5 1027,-38.5 1033,-44.5 1033,-50.5 1033,-50.5 1033,-365.5 1033,-365.5 1033,-371.5 1027,-377.5 1021,-377.5 1021,-377.5 569,-377.5 569,-377.5 563,-377.5 557,-371.5 557,-365.5 557,-365.5 557,-50.5 557,-50.5 557,-44.5 563,-38.5 569,-38.5"/>
+<text text-anchor="middle" x="795" y="-364.05" font-family="Helvetica,Arial,sans-serif" font-size="10.50">2. Connector Styles &amp; Priority Grammar</text>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_glossary</title>
+<path fill="#f8fafc" stroke="#475569" stroke-dasharray="5,2" d="M1057,-8C1057,-8 1357,-8 1357,-8 1363,-8 1369,-14 1369,-20 1369,-20 1369,-396 1369,-396 1369,-402 1363,-408 1357,-408 1357,-408 1057,-408 1057,-408 1051,-408 1045,-402 1045,-396 1045,-396 1045,-20 1045,-20 1045,-14 1051,-8 1057,-8"/>
+<text text-anchor="middle" x="1207" y="-394.55" font-family="Helvetica,Arial,sans-serif" font-size="10.50">3. Nomenclature &amp; Index Guide</text>
+</g>
+<!-- leg_gate -->
+<g id="node1" class="node">
+<title>leg_gate</title>
+<path fill="#fef9c3" stroke="#ca8a04" d="M27.79,-311C27.79,-311 222.21,-311 222.21,-311 228.21,-311 234.21,-317 234.21,-323 234.21,-323 234.21,-337.8 234.21,-337.8 234.21,-343.8 228.21,-349.8 222.21,-349.8 222.21,-349.8 27.79,-349.8 27.79,-349.8 21.79,-349.8 15.79,-343.8 15.79,-337.8 15.79,-337.8 15.79,-323 15.79,-323 15.79,-317 21.79,-311 27.79,-311"/>
+<text text-anchor="middle" x="125" y="-337.25" font-family="Helvetica,Arial,sans-serif" font-size="9.50">[S#] TimedGate [Lockout: 0s..85s] &lt;&lt;LOCKOUT&gt;&gt;</text>
+<polyline fill="none" stroke="#ca8a04" points="15.79,-330.4 234.21,-330.4"/>
+<text text-anchor="start" x="23.79" y="-317.85" font-family="Helvetica,Arial,sans-serif" font-size="9.50">Holds robot in starting zone until time gate opens </text>
+</g>
+<!-- leg_state -->
+<g id="node3" class="node">
+<title>leg_state</title>
+<path fill="#ffffff" stroke="#334155" d="M43.35,-145.8C43.35,-145.8 206.65,-145.8 206.65,-145.8 212.65,-145.8 218.65,-151.8 218.65,-157.8 218.65,-157.8 218.65,-237.6 218.65,-237.6 218.65,-243.6 212.65,-249.6 206.65,-249.6 206.65,-249.6 43.35,-249.6 43.35,-249.6 37.35,-249.6 31.35,-243.6 31.35,-237.6 31.35,-237.6 31.35,-157.8 31.35,-157.8 31.35,-151.8 37.35,-145.8 43.35,-145.8"/>
+<text text-anchor="middle" x="125" y="-237.05" font-family="Helvetica,Arial,sans-serif" font-size="9.50">[S#] StateName [Phase: 5s..85s] &lt;&lt;ROLE&gt;&gt;</text>
+<text text-anchor="middle" x="125" y="-225.65" font-family="Helvetica,Arial,sans-serif" font-size="9.50">(Rule F.3 or F.7 Dimensional Limit)</text>
+<polyline fill="none" stroke="#334155" points="31.35,-218.8 218.65,-218.8"/>
+<text text-anchor="start" x="39.35" y="-206.25" font-family="Helvetica,Arial,sans-serif" font-size="9.50">+ public_blackboard_var : Type = Value </text>
+<text text-anchor="start" x="39.35" y="-194.85" font-family="Helvetica,Arial,sans-serif" font-size="9.50">- private_local_var : Type = Value </text>
+<polyline fill="none" stroke="#334155" points="31.35,-188 218.65,-188"/>
+<text text-anchor="start" x="39.35" y="-175.45" font-family="Helvetica,Arial,sans-serif" font-size="9.50">entry / runOnceOnStateEnter() </text>
+<text text-anchor="start" x="39.35" y="-164.05" font-family="Helvetica,Arial,sans-serif" font-size="9.50">do / runPeriodicLoopWhileActive() </text>
+<text text-anchor="start" x="39.35" y="-152.65" font-family="Helvetica,Arial,sans-serif" font-size="9.50">exit / runOnceOnStateExit() </text>
+</g>
+<!-- leg_gate&#45;&gt;leg_state -->
+<!-- leg_route -->
+<g id="node2" class="node">
+<title>leg_route</title>
+<polygon fill="#fef3c7" stroke="#d97706" stroke-width="2" points="401,-361.2 263.3,-330.4 401,-299.6 538.7,-330.4 401,-361.2"/>
+<text text-anchor="middle" x="401" y="-333.25" font-family="Helvetica,Arial,sans-serif" font-size="9.50">[S#] Router</text>
+<text text-anchor="middle" x="401" y="-321.85" font-family="Helvetica,Arial,sans-serif" font-size="9.50">[Phase: 5s..85s] &lt;&lt;ROUTER&gt;&gt;</text>
+</g>
+<!-- leg_avoid -->
+<g id="node4" class="node">
+<title>leg_avoid</title>
+<path fill="#ecfeff" stroke="#0891b2" d="M291.38,-178.3C291.38,-178.3 510.62,-178.3 510.62,-178.3 516.62,-178.3 522.62,-184.3 522.62,-190.3 522.62,-190.3 522.62,-205.1 522.62,-205.1 522.62,-211.1 516.62,-217.1 510.62,-217.1 510.62,-217.1 291.38,-217.1 291.38,-217.1 285.38,-217.1 279.38,-211.1 279.38,-205.1 279.38,-205.1 279.38,-190.3 279.38,-190.3 279.38,-184.3 285.38,-178.3 291.38,-178.3"/>
+<text text-anchor="middle" x="401" y="-204.55" font-family="Helvetica,Arial,sans-serif" font-size="9.50">[S#] AvoidObstacle [Armed: 0s..100s] &lt;&lt;AVOIDANCE&gt;&gt;</text>
+<polyline fill="none" stroke="#0891b2" points="279.38,-197.7 522.62,-197.7"/>
+<text text-anchor="start" x="287.38" y="-185.15" font-family="Helvetica,Arial,sans-serif" font-size="9.50">High-priority LiDAR / ToF collision override </text>
+</g>
+<!-- leg_route&#45;&gt;leg_avoid -->
+<!-- leg_macro -->
+<g id="node5" class="node">
+<title>leg_macro</title>
+<polygon fill="#eef2ff" stroke="#4338ca" stroke-width="2" points="28.34,-34.2 28.34,-95.8 221.66,-95.8 221.66,-34.2 28.34,-34.2"/>
+<text text-anchor="middle" x="125" y="-83.25" font-family="Helvetica,Arial,sans-serif" font-size="9.50">[M#] MacroProcessName [Phase: 5s..85s]</text>
+<text text-anchor="middle" x="125" y="-71.85" font-family="Helvetica,Arial,sans-serif" font-size="9.50">&lt;&lt;MACRO - Ref: 21_Robot.dot&gt;&gt;</text>
+<polyline fill="none" stroke="#4338ca" stroke-width="2" points="28.34,-65 221.66,-65"/>
+<text text-anchor="start" x="36.34" y="-52.45" font-family="Helvetica,Arial,sans-serif" font-size="9.50">Collapsed multi-state loop in [10] Overview </text>
+<text text-anchor="start" x="36.34" y="-41.05" font-family="Helvetica,Arial,sans-serif" font-size="9.50">Expanded with E_in / S_out ports in [21]/[22] </text>
+</g>
+<!-- leg_state&#45;&gt;leg_macro -->
+<!-- leg_stop -->
+<g id="node6" class="node">
+<title>leg_stop</title>
+<path fill="#fee2e2" stroke="#dc2626" d="M308.52,-45.6C308.52,-45.6 493.48,-45.6 493.48,-45.6 499.48,-45.6 505.48,-51.6 505.48,-57.6 505.48,-57.6 505.48,-72.4 505.48,-72.4 505.48,-78.4 499.48,-84.4 493.48,-84.4 493.48,-84.4 308.52,-84.4 308.52,-84.4 302.52,-84.4 296.52,-78.4 296.52,-72.4 296.52,-72.4 296.52,-57.6 296.52,-57.6 296.52,-51.6 302.52,-45.6 308.52,-45.6"/>
+<text text-anchor="middle" x="401" y="-71.85" font-family="Helvetica,Arial,sans-serif" font-size="9.50">[S#] Cutoff100s [Armed: 0s..100s] &lt;&lt;CUTOFF&gt;&gt;</text>
+<polyline fill="none" stroke="#dc2626" points="296.52,-65 505.48,-65"/>
+<text text-anchor="start" x="304.52" y="-52.45" font-family="Helvetica,Arial,sans-serif" font-size="9.50">De-energizes actuators @100s or E-Stop press </text>
+</g>
+<!-- leg_avoid&#45;&gt;leg_stop -->
+<!-- c1_a -->
+<g id="node7" class="node">
+<title>c1_a</title>
+<path fill="lightgrey" stroke="black" d="M580.12,-312.4C580.12,-312.4 619.88,-312.4 619.88,-312.4 625.88,-312.4 631.88,-318.4 631.88,-324.4 631.88,-324.4 631.88,-336.4 631.88,-336.4 631.88,-342.4 625.88,-348.4 619.88,-348.4 619.88,-348.4 580.12,-348.4 580.12,-348.4 574.12,-348.4 568.12,-342.4 568.12,-336.4 568.12,-336.4 568.12,-324.4 568.12,-324.4 568.12,-318.4 574.12,-312.4 580.12,-312.4"/>
+<text text-anchor="middle" x="600" y="-327.55" font-family="Helvetica,Arial,sans-serif" font-size="9.50">Source State</text>
+</g>
+<!-- c1_b -->
+<g id="node8" class="node">
+<title>c1_b</title>
+<path fill="lightgrey" stroke="black" d="M732.92,-312.4C732.92,-312.4 771.08,-312.4 771.08,-312.4 777.08,-312.4 783.08,-318.4 783.08,-324.4 783.08,-324.4 783.08,-336.4 783.08,-336.4 783.08,-342.4 777.08,-348.4 771.08,-348.4 771.08,-348.4 732.92,-348.4 732.92,-348.4 726.92,-348.4 720.92,-342.4 720.92,-336.4 720.92,-336.4 720.92,-324.4 720.92,-324.4 720.92,-318.4 726.92,-312.4 732.92,-312.4"/>
+<text text-anchor="middle" x="752" y="-327.55" font-family="Helvetica,Arial,sans-serif" font-size="9.50">Target State</text>
+</g>
+<!-- c1_a&#45;&gt;c1_b -->
+<g id="edge5" class="edge">
+<title>c1_a-&gt;c1_b</title>
+</g>
+<!-- c2_a -->
+<g id="node9" class="node">
+<title>c2_a</title>
+<path fill="#fef3c7" stroke="#d97706" d="M589.32,-210.23C589.32,-210.23 575.55,-203.17 575.55,-203.17 570.21,-200.44 570.21,-194.96 575.55,-192.23 575.55,-192.23 589.32,-185.17 589.32,-185.17 594.66,-182.44 605.34,-182.44 610.68,-185.17 610.68,-185.17 624.45,-192.23 624.45,-192.23 629.79,-194.96 629.79,-200.44 624.45,-203.17 624.45,-203.17 610.68,-210.23 610.68,-210.23 605.34,-212.96 594.66,-212.96 589.32,-210.23"/>
+<text text-anchor="middle" x="600" y="-194.85" font-family="Helvetica,Arial,sans-serif" font-size="9.50">Router</text>
+</g>
+<!-- c1_a&#45;&gt;c2_a -->
+<!-- c2_b -->
+<g id="node10" class="node">
+<title>c2_b</title>
+<path fill="lightgrey" stroke="black" d="M728.7,-179.7C728.7,-179.7 775.3,-179.7 775.3,-179.7 781.3,-179.7 787.3,-185.7 787.3,-191.7 787.3,-191.7 787.3,-203.7 787.3,-203.7 787.3,-209.7 781.3,-215.7 775.3,-215.7 775.3,-215.7 728.7,-215.7 728.7,-215.7 722.7,-215.7 716.7,-209.7 716.7,-203.7 716.7,-203.7 716.7,-191.7 716.7,-191.7 716.7,-185.7 722.7,-179.7 728.7,-179.7"/>
+<text text-anchor="middle" x="752" y="-194.85" font-family="Helvetica,Arial,sans-serif" font-size="9.50">Branch Target</text>
+</g>
+<!-- c1_b&#45;&gt;c2_b -->
+<!-- c2_a&#45;&gt;c2_b -->
+<g id="edge6" class="edge">
+<title>c2_a-&gt;c2_b</title>
+</g>
+<!-- c3_a -->
+<g id="node11" class="node">
+<title>c3_a</title>
+<path fill="lightgrey" stroke="black" d="M649.94,-47C649.94,-47 706.06,-47 706.06,-47 712.06,-47 718.06,-53 718.06,-59 718.06,-59 718.06,-71 718.06,-71 718.06,-77 712.06,-83 706.06,-83 706.06,-83 649.94,-83 649.94,-83 643.94,-83 637.94,-77 637.94,-71 637.94,-71 637.94,-59 637.94,-59 637.94,-53 643.94,-47 649.94,-47"/>
+<text text-anchor="middle" x="678" y="-67.85" font-family="Helvetica,Arial,sans-serif" font-size="9.50">Active State</text>
+<text text-anchor="middle" x="678" y="-56.45" font-family="Helvetica,Arial,sans-serif" font-size="9.50">(Bounded Retry)</text>
+</g>
+<!-- c2_a&#45;&gt;c3_a -->
+<!-- c2_b&#45;&gt;c3_a -->
+<!-- c3_a&#45;&gt;c3_a -->
+<g id="edge7" class="edge">
+<title>c3_a-&gt;c3_a</title>
+<path fill="none" stroke="#2563eb" stroke-dasharray="5,2" d="M718.43,-76.49C734.06,-77 747.06,-73.17 747.06,-65 747.06,-58.94 739.9,-55.27 729.82,-53.98"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="730.08,-50.49 719.94,-53.58 729.79,-57.49 730.08,-50.49"/>
+<text text-anchor="middle" x="773.76" y="-67.55" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#1d4ed8">[P2 | max=2]</text>
+<text text-anchor="middle" x="773.76" y="-57.35" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#1d4ed8">slip -&gt; realign()</text>
+</g>
+<!-- c4_a -->
+<g id="node12" class="node">
+<title>c4_a</title>
+<path fill="lightgrey" stroke="black" d="M833,-312.4C833,-312.4 863,-312.4 863,-312.4 869,-312.4 875,-318.4 875,-324.4 875,-324.4 875,-336.4 875,-336.4 875,-342.4 869,-348.4 863,-348.4 863,-348.4 833,-348.4 833,-348.4 827,-348.4 821,-342.4 821,-336.4 821,-336.4 821,-324.4 821,-324.4 821,-318.4 827,-312.4 833,-312.4"/>
+<text text-anchor="middle" x="847.78" y="-327.55" font-family="Helvetica,Arial,sans-serif" font-size="9.50">Nav Hub</text>
+</g>
+<!-- c4_b -->
+<g id="node13" class="node">
+<title>c4_b</title>
+<path fill="#ecfeff" stroke="#0891b2" d="M979.43,-312.4C979.43,-312.4 1012.57,-312.4 1012.57,-312.4 1018.57,-312.4 1024.57,-318.4 1024.57,-324.4 1024.57,-324.4 1024.57,-336.4 1024.57,-336.4 1024.57,-342.4 1018.57,-348.4 1012.57,-348.4 1012.57,-348.4 979.43,-348.4 979.43,-348.4 973.43,-348.4 967.43,-342.4 967.43,-336.4 967.43,-336.4 967.43,-324.4 967.43,-324.4 967.43,-318.4 973.43,-312.4 979.43,-312.4"/>
+<text text-anchor="middle" x="996" y="-327.55" font-family="Helvetica,Arial,sans-serif" font-size="9.50">Avoidance</text>
+</g>
+<!-- c4_a&#45;&gt;c4_b -->
+<g id="edge8" class="edge">
+<title>c4_a-&gt;c4_b</title>
+</g>
+<!-- c5_a -->
+<g id="node14" class="node">
+<title>c5_a</title>
+<path fill="lightgrey" stroke="black" d="M828.65,-179.7C828.65,-179.7 867.35,-179.7 867.35,-179.7 873.35,-179.7 879.35,-185.7 879.35,-191.7 879.35,-191.7 879.35,-203.7 879.35,-203.7 879.35,-209.7 873.35,-215.7 867.35,-215.7 867.35,-215.7 828.65,-215.7 828.65,-215.7 822.65,-215.7 816.65,-209.7 816.65,-203.7 816.65,-203.7 816.65,-191.7 816.65,-191.7 816.65,-185.7 822.65,-179.7 828.65,-179.7"/>
+<text text-anchor="middle" x="848" y="-194.85" font-family="Helvetica,Arial,sans-serif" font-size="9.50">Active State</text>
+</g>
+<!-- c4_a&#45;&gt;c5_a -->
+<!-- c5_b -->
+<g id="node15" class="node">
+<title>c5_b</title>
+<path fill="#fee2e2" stroke="#dc2626" d="M978.62,-179.7C978.62,-179.7 1013.38,-179.7 1013.38,-179.7 1019.38,-179.7 1025.38,-185.7 1025.38,-191.7 1025.38,-191.7 1025.38,-203.7 1025.38,-203.7 1025.38,-209.7 1019.38,-215.7 1013.38,-215.7 1013.38,-215.7 978.62,-215.7 978.62,-215.7 972.62,-215.7 966.62,-209.7 966.62,-203.7 966.62,-203.7 966.62,-191.7 966.62,-191.7 966.62,-185.7 972.62,-179.7 978.62,-179.7"/>
+<text text-anchor="middle" x="996" y="-194.85" font-family="Helvetica,Arial,sans-serif" font-size="9.50">Cutoff100s</text>
+</g>
+<!-- c4_b&#45;&gt;c5_b -->
+<!-- c5_a&#45;&gt;c5_b -->
+<g id="edge9" class="edge">
+<title>c5_a-&gt;c5_b</title>
+</g>
+<!-- gloss_index -->
+<g id="node16" class="node">
+<title>gloss_index</title>
+<path fill="#ffffff" stroke="#334155" d="M1065.49,-281.9C1065.49,-281.9 1348.51,-281.9 1348.51,-281.9 1354.51,-281.9 1360.51,-287.9 1360.51,-293.9 1360.51,-293.9 1360.51,-366.9 1360.51,-366.9 1360.51,-372.9 1354.51,-378.9 1348.51,-378.9 1348.51,-378.9 1065.49,-378.9 1065.49,-378.9 1059.49,-378.9 1053.49,-372.9 1053.49,-366.9 1053.49,-366.9 1053.49,-293.9 1053.49,-293.9 1053.49,-287.9 1059.49,-281.9 1065.49,-281.9"/>
+<text text-anchor="middle" x="1207" y="-366.35" font-family="Helvetica,Arial,sans-serif" font-size="9.50">A. Decade File Indexing Standard</text>
+<polyline fill="none" stroke="#334155" points="1053.49,-359.5 1360.51,-359.5"/>
+<text text-anchor="start" x="1061.49" y="-346.95" font-family="Helvetica,Arial,sans-serif" font-size="9.50">[00_Legend] : Symbology &amp; Nomenclature Guide (Read First) </text>
+<polyline fill="none" stroke="#334155" points="1053.49,-340.1 1360.51,-340.1"/>
+<text text-anchor="start" x="1061.49" y="-327.55" font-family="Helvetica,Arial,sans-serif" font-size="9.50">[00_Robot] : Master System Blueprint (All states, clusters &amp; specs) </text>
+<polyline fill="none" stroke="#334155" points="1053.49,-320.7 1360.51,-320.7"/>
+<text text-anchor="start" x="1061.49" y="-308.15" font-family="Helvetica,Arial,sans-serif" font-size="9.50">[10_Robot] : Macro Overview (High-level flow with Macro-Process boxes) </text>
+<polyline fill="none" stroke="#334155" points="1053.49,-301.3 1360.51,-301.3"/>
+<text text-anchor="start" x="1061.49" y="-288.75" font-family="Helvetica,Arial,sans-serif" font-size="9.50">[21] / [22] : Sub-Diagrams (Expanded Macro loops with E_in / S_out ports) </text>
+</g>
+<!-- gloss_time -->
+<g id="node17" class="node">
+<title>gloss_time</title>
+<path fill="#ffffff" stroke="#334155" d="M1066.11,-139.5C1066.11,-139.5 1347.89,-139.5 1347.89,-139.5 1353.89,-139.5 1359.89,-145.5 1359.89,-151.5 1359.89,-151.5 1359.89,-243.9 1359.89,-243.9 1359.89,-249.9 1353.89,-255.9 1347.89,-255.9 1347.89,-255.9 1066.11,-255.9 1066.11,-255.9 1060.11,-255.9 1054.11,-249.9 1054.11,-243.9 1054.11,-243.9 1054.11,-151.5 1054.11,-151.5 1054.11,-145.5 1060.11,-139.5 1066.11,-139.5"/>
+<text text-anchor="middle" x="1207" y="-243.35" font-family="Helvetica,Arial,sans-serif" font-size="9.50">B. Time-Window Role Prefixes</text>
+<polyline fill="none" stroke="#334155" points="1054.11,-236.5 1359.89,-236.5"/>
+<text text-anchor="start" x="1062.11" y="-223.95" font-family="Helvetica,Arial,sans-serif" font-size="9.50">[Start: 0s] / [Setup: 0s..5s] : Cord trigger &amp; one-shot Grail setup </text>
+<polyline fill="none" stroke="#334155" points="1054.11,-217.1 1359.89,-217.1"/>
+<text text-anchor="start" x="1062.11" y="-204.55" font-family="Helvetica,Arial,sans-serif" font-size="9.50">[Lockout: 0s..85s] : Mandatory SIMA hold in Stable (early exit = removed) </text>
+<polyline fill="none" stroke="#334155" points="1054.11,-197.7 1359.89,-197.7"/>
+<text text-anchor="start" x="1062.11" y="-185.15" font-family="Helvetica,Arial,sans-serif" font-size="9.50">[Phase: 5s..85s] / [LatePhase: 45s..85s] : Cyclic build window (~15s/trip) </text>
+<polyline fill="none" stroke="#334155" points="1054.11,-178.3 1359.89,-178.3"/>
+<text text-anchor="start" x="1062.11" y="-165.75" font-family="Helvetica,Arial,sans-serif" font-size="9.50">[Attack: 85s..90s] / [Endgame: 90s..100s] : Salvo, homing &amp; L4 Grail </text>
+<polyline fill="none" stroke="#334155" points="1054.11,-158.9 1359.89,-158.9"/>
+<text text-anchor="start" x="1062.11" y="-146.35" font-family="Helvetica,Arial,sans-serif" font-size="9.50">[Armed: 0s..100s] : Safety / Cutoff armed all match (IRQ or @100s) </text>
+</g>
+<!-- gloss_index&#45;&gt;gloss_time -->
+<!-- gloss_prio -->
+<g id="node18" class="node">
+<title>gloss_prio</title>
+<path fill="#ffffff" stroke="#334155" d="M1073.41,-16.5C1073.41,-16.5 1340.59,-16.5 1340.59,-16.5 1346.59,-16.5 1352.59,-22.5 1352.59,-28.5 1352.59,-28.5 1352.59,-101.5 1352.59,-101.5 1352.59,-107.5 1346.59,-113.5 1340.59,-113.5 1340.59,-113.5 1073.41,-113.5 1073.41,-113.5 1067.41,-113.5 1061.41,-107.5 1061.41,-101.5 1061.41,-101.5 1061.41,-28.5 1061.41,-28.5 1061.41,-22.5 1067.41,-16.5 1073.41,-16.5"/>
+<text text-anchor="middle" x="1207" y="-100.95" font-family="Helvetica,Arial,sans-serif" font-size="9.50">C. Priority &amp; Compartment Grammar</text>
+<polyline fill="none" stroke="#334155" points="1061.41,-94.1 1352.59,-94.1"/>
+<text text-anchor="start" x="1069.41" y="-81.55" font-family="Helvetica,Arial,sans-serif" font-size="9.50">[P0] : Hardware / Safety Preemption (Highest priority override) </text>
+<polyline fill="none" stroke="#334155" points="1061.41,-74.7 1352.59,-74.7"/>
+<text text-anchor="start" x="1069.41" y="-62.15" font-family="Helvetica,Arial,sans-serif" font-size="9.50">[P1..P4] : Deterministic branch priority (P1 evaluated first, then P2..P4) </text>
+<polyline fill="none" stroke="#334155" points="1061.41,-55.3 1352.59,-55.3"/>
+<text text-anchor="start" x="1069.41" y="-42.75" font-family="Helvetica,Arial,sans-serif" font-size="9.50">+ var / - var : Public shared blackboard variable (+) vs Private local (-) </text>
+<polyline fill="none" stroke="#334155" points="1061.41,-35.9 1352.59,-35.9"/>
+<text text-anchor="start" x="1069.41" y="-23.35" font-family="Helvetica,Arial,sans-serif" font-size="9.50">entry / do / exit : Run once on enter, loop while active, run once on exit </text>
+</g>
+<!-- gloss_time&#45;&gt;gloss_prio -->
+</g>
+</svg>

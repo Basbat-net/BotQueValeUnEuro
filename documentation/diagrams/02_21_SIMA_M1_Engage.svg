@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="694pt" height="807pt" viewBox="0.00 0.00 693.68 807.14">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(25.2 781.94)">
+<title>SIMA_M1_Engage</title>
+<polygon fill="white" stroke="none" points="-25.2,25.2 -25.2,-781.94 668.48,-781.94 668.48,25.2 -25.2,25.2"/>
+<text text-anchor="middle" x="321.64" y="-741.04" font-family="Helvetica,Arial,sans-serif" font-size="13.00">[21] SIMA - M1_Engage: Joust &amp; Moat Capture</text>
+<!-- state_3 -->
+<g id="node1" class="node">
+<title>state_3</title>
+<polygon fill="#fef3c7" stroke="#d97706" stroke-width="2" points="435.94,-562.34 286.83,-530.34 435.94,-498.34 585.05,-530.34 435.94,-562.34"/>
+<text text-anchor="middle" x="435.94" y="-533.34" font-family="Helvetica,Arial,sans-serif" font-size="10.00">[S3] RouteTarget</text>
+<text text-anchor="middle" x="435.94" y="-521.34" font-family="Helvetica,Arial,sans-serif" font-size="10.00">[Phase: 90s..95s] &lt;&lt;ROUTER&gt;&gt;</text>
+</g>
+<!-- state_4 -->
+<g id="node2" class="node">
+<title>state_4</title>
+<path fill="#ffffff" stroke="#334155" d="M12,-339.4C12,-339.4 209.89,-339.4 209.89,-339.4 215.89,-339.4 221.89,-345.4 221.89,-351.4 221.89,-351.4 221.89,-379.4 221.89,-379.4 221.89,-385.4 215.89,-391.4 209.89,-391.4 209.89,-391.4 12,-391.4 12,-391.4 6,-391.4 0,-385.4 0,-379.4 0,-379.4 0,-351.4 0,-351.4 0,-345.4 6,-339.4 12,-339.4"/>
+<text text-anchor="middle" x="110.94" y="-378.4" font-family="Helvetica,Arial,sans-serif" font-size="10.00">[S4] JoustSima [Endgame: 90s..100s] &lt;&lt;JOUST&gt;&gt;</text>
+<polyline fill="none" stroke="#334155" points="0,-371.4 221.89,-371.4"/>
+<text text-anchor="start" x="8" y="-358.4" font-family="Helvetica,Arial,sans-serif" font-size="10.00">Touch opposing SIMA with distinct </text>
+<text text-anchor="start" x="8" y="-346.4" font-family="Helvetica,Arial,sans-serif" font-size="10.00"> RAL4010 lance (5pt at 100s) </text>
+</g>
+<!-- state_3&#45;&gt;state_4 -->
+<g id="edge2" class="edge">
+<title>state_3-&gt;state_4</title>
+<path fill="none" stroke="#d97706" d="M392.11,-507.37C335.68,-479.07 237.25,-429.73 173.1,-397.57"/>
+<polygon fill="#d97706" stroke="#d97706" points="173.07,-397.55 165.92,-398.44 162.35,-392.18 169.5,-391.29 173.07,-397.55"/>
+<text text-anchor="middle" x="342.8" y="-457.69" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#92400e">[P1 | t&gt;=90s]</text>
+<text text-anchor="middle" x="342.8" y="-447.49" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#92400e">[enemy_sima_seen &amp;&amp;</text>
+<text text-anchor="middle" x="342.8" y="-437.29" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#92400e">dist &lt;= 800mm]</text>
+</g>
+<!-- state_5 -->
+<g id="node3" class="node">
+<title>state_5</title>
+<path fill="#ffffff" stroke="#334155" d="M232.74,-169.77C232.74,-169.77 441.15,-169.77 441.15,-169.77 447.15,-169.77 453.15,-175.77 453.15,-181.77 453.15,-181.77 453.15,-209.77 453.15,-209.77 453.15,-215.77 447.15,-221.77 441.15,-221.77 441.15,-221.77 232.74,-221.77 232.74,-221.77 226.74,-221.77 220.74,-215.77 220.74,-209.77 220.74,-209.77 220.74,-181.77 220.74,-181.77 220.74,-175.77 226.74,-169.77 232.74,-169.77"/>
+<text text-anchor="middle" x="336.94" y="-208.77" font-family="Helvetica,Arial,sans-serif" font-size="10.00">[S5] OccupyMoat [Endgame: 90s..100s] &lt;&lt;MOAT&gt;&gt;</text>
+<polyline fill="none" stroke="#334155" points="220.74,-201.77 453.15,-201.77"/>
+<text text-anchor="start" x="228.74" y="-188.77" font-family="Helvetica,Arial,sans-serif" font-size="10.00">Park inside opponent Moat boundary </text>
+<text text-anchor="start" x="228.74" y="-176.77" font-family="Helvetica,Arial,sans-serif" font-size="10.00"> line (5pt at 100s) </text>
+</g>
+<!-- state_3&#45;&gt;state_5 -->
+<g id="edge3" class="edge">
+<title>state_3-&gt;state_5</title>
+<path fill="none" stroke="#d97706" d="M427.16,-499.83C409.15,-439.32 368.06,-301.29 348.16,-234.44"/>
+<polygon fill="#d97706" stroke="#d97706" points="348.15,-234.43 342.61,-229.82 344.73,-222.92 350.28,-227.53 348.15,-234.43"/>
+<text text-anchor="middle" x="434.65" y="-373.05" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#92400e">[P2 | t&gt;=90s]</text>
+<text text-anchor="middle" x="434.65" y="-362.85" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#92400e">[!enemy_sima_seen ||</text>
+<text text-anchor="middle" x="434.65" y="-352.65" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#92400e">dist &gt; 800mm]</text>
+</g>
+<!-- exit_to_6 -->
+<g id="node6" class="node">
+<title>exit_to_6</title>
+<polygon fill="#ecfeff" stroke="#0891b2" points="643.28,-401.74 570.61,-401.74 570.61,-329.07 643.28,-329.07 643.28,-401.74"/>
+<polyline fill="none" stroke="#0891b2" points="582.61,-401.74 570.61,-389.74"/>
+<polyline fill="none" stroke="#0891b2" points="570.61,-341.07 582.61,-329.07"/>
+<polyline fill="none" stroke="#0891b2" points="631.28,-329.07 643.28,-341.07"/>
+<polyline fill="none" stroke="#0891b2" points="643.28,-389.74 631.28,-401.74"/>
+<text text-anchor="middle" x="606.94" y="-368.4" font-family="Helvetica,Arial,sans-serif" font-size="10.00">S_out (To S6)</text>
+<text text-anchor="middle" x="606.94" y="-356.4" font-family="Helvetica,Arial,sans-serif" font-size="10.00">AvoidChassis</text>
+</g>
+<!-- state_3&#45;&gt;exit_to_6 -->
+<g id="edge8" class="edge">
+<title>state_3-&gt;exit_to_6</title>
+<path fill="none" stroke="#0891b2" stroke-width="2" stroke-dasharray="5,2" d="M462.66,-503.88C489.22,-478.58 530.45,-439.3 562.04,-409.19"/>
+<polygon fill="#0891b2" stroke="#0891b2" stroke-width="2" points="563.24,-412.88 568.07,-403.45 558.41,-407.81 563.24,-412.88"/>
+<text text-anchor="middle" x="559.14" y="-457.69" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0891b2">[P0 | t&gt;=85s]</text>
+<text text-anchor="middle" x="559.14" y="-447.49" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0891b2">tof_alert</text>
+<text text-anchor="middle" x="559.14" y="-437.29" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0891b2">[tof &lt;= 200mm]</text>
+</g>
+<!-- state_4&#45;&gt;state_4 -->
+<g id="edge4" class="edge">
+<title>state_4-&gt;state_4</title>
+<path fill="none" stroke="#2563eb" stroke-dasharray="5,2" d="M222.16,-381.25C256.21,-380.9 282.89,-375.61 282.89,-365.4 282.89,-356.35 261.91,-351.17 233.42,-349.87"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="233.77,-346.38 223.67,-349.6 233.57,-353.37 233.77,-346.38"/>
+<text text-anchor="middle" x="319.88" y="-378.15" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#1d4ed8">[P2 | t&gt;=90s | max=3]</text>
+<text text-anchor="middle" x="319.88" y="-367.95" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#1d4ed8">slip</text>
+<text text-anchor="middle" x="319.88" y="-357.75" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#1d4ed8">[!contact_held &amp;&amp;</text>
+<text text-anchor="middle" x="319.88" y="-347.55" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#1d4ed8">t &lt; 95s]</text>
+</g>
+<!-- state_4&#45;&gt;state_5 -->
+<g id="edge5" class="edge">
+<title>state_4-&gt;state_5</title>
+<path fill="none" stroke="#1e293b" d="M145.27,-338.94C184.96,-309.51 250.35,-261 293.54,-228.97"/>
+<polygon fill="#1e293b" stroke="#1e293b" points="295.51,-231.86 301.45,-223.1 291.34,-226.24 295.51,-231.86"/>
+<text text-anchor="middle" x="289.61" y="-288.42" font-family="Helvetica,Arial,sans-serif" font-size="8.50">[P1 | t&gt;=95s]</text>
+<text text-anchor="middle" x="289.61" y="-278.22" font-family="Helvetica,Arial,sans-serif" font-size="8.50">evaded</text>
+<text text-anchor="middle" x="289.61" y="-268.02" font-family="Helvetica,Arial,sans-serif" font-size="8.50">[!contact_held &amp;&amp;</text>
+<text text-anchor="middle" x="289.61" y="-257.82" font-family="Helvetica,Arial,sans-serif" font-size="8.50">t &gt;= 95s]</text>
+</g>
+<!-- exit_to_7 -->
+<g id="node5" class="node">
+<title>exit_to_7</title>
+<polygon fill="#fee2e2" stroke="#dc2626" points="195.28,-72.67 122.61,-72.67 122.61,0 195.28,0 195.28,-72.67"/>
+<polyline fill="none" stroke="#dc2626" points="134.61,-72.67 122.61,-60.67"/>
+<polyline fill="none" stroke="#dc2626" points="122.61,-12 134.61,0"/>
+<polyline fill="none" stroke="#dc2626" points="183.28,0 195.28,-12"/>
+<polyline fill="none" stroke="#dc2626" points="195.28,-60.67 183.28,-72.67"/>
+<text text-anchor="middle" x="158.94" y="-39.33" font-family="Helvetica,Arial,sans-serif" font-size="10.00">S_out (To S7)</text>
+<text text-anchor="middle" x="158.94" y="-27.33" font-family="Helvetica,Arial,sans-serif" font-size="10.00">Cutoff100s</text>
+</g>
+<!-- state_4&#45;&gt;exit_to_7 -->
+<g id="edge6" class="edge">
+<title>state_4-&gt;exit_to_7</title>
+<path fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,2" d="M114.67,-339.01C122.7,-284.27 141.76,-154.45 152.05,-84.29"/>
+<polygon fill="#dc2626" stroke="#dc2626" stroke-width="2" points="155.26,-86.54 153.25,-76.14 148.33,-85.53 155.26,-86.54"/>
+<text text-anchor="middle" x="163.47" y="-203.42" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#dc2626">[P1 | t&gt;=100s]</text>
+<text text-anchor="middle" x="163.47" y="-193.22" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#dc2626">end_100s</text>
+<text text-anchor="middle" x="163.47" y="-183.02" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#dc2626">[contact_held]</text>
+</g>
+<!-- state_5&#45;&gt;exit_to_7 -->
+<g id="edge7" class="edge">
+<title>state_5-&gt;exit_to_7</title>
+<path fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,2" d="M308.35,-169.48C280.2,-144.58 236.79,-106.19 204.01,-77.19"/>
+<polygon fill="#dc2626" stroke="#dc2626" stroke-width="2" points="207.57,-75.67 197.76,-71.66 202.93,-80.91 207.57,-75.67"/>
+<text text-anchor="middle" x="296.03" y="-128.62" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#dc2626">[P1 | t&gt;=100s]</text>
+<text text-anchor="middle" x="296.03" y="-118.42" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#dc2626">end_100s</text>
+<text text-anchor="middle" x="296.03" y="-108.22" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#dc2626">[in_moat_zone]</text>
+</g>
+<!-- entry_from_2 -->
+<g id="node4" class="node">
+<title>entry_from_2</title>
+<polygon fill="#e0e7ff" stroke="#4338ca" points="326.94,-733.14 248.17,-701.14 326.94,-669.14 405.72,-701.14 326.94,-733.14"/>
+<polyline fill="none" stroke="#4338ca" points="259.28,-705.66 259.28,-696.62"/>
+<polyline fill="none" stroke="#4338ca" points="315.83,-673.66 338.06,-673.66"/>
+<polyline fill="none" stroke="#4338ca" points="394.6,-696.62 394.6,-705.66"/>
+<polyline fill="none" stroke="#4338ca" points="338.06,-728.62 315.83,-728.62"/>
+<text text-anchor="middle" x="326.94" y="-704.14" font-family="Helvetica,Arial,sans-serif" font-size="10.00">E_in (From S2)</text>
+<text text-anchor="middle" x="326.94" y="-692.14" font-family="Helvetica,Arial,sans-serif" font-size="10.00">Fire1Ball</text>
+</g>
+<!-- entry_from_2&#45;&gt;state_3 -->
+<g id="edge1" class="edge">
+<title>entry_from_2-&gt;state_3</title>
+<path fill="none" stroke="#4338ca" stroke-width="2" d="M343.03,-675.23C361.22,-647.06 391.03,-600.89 411.97,-568.46"/>
+<polygon fill="#4338ca" stroke="#4338ca" stroke-width="2" points="414.04,-571.72 416.52,-561.42 408.16,-567.92 414.04,-571.72"/>
+<text text-anchor="middle" x="416.59" y="-628.49" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#312e81">[P1 | t&gt;=90s]</text>
+<text text-anchor="middle" x="416.59" y="-618.29" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#312e81">shot_done</text>
+<text text-anchor="middle" x="416.59" y="-608.09" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#312e81">[launched ||</text>
+<text text-anchor="middle" x="416.59" y="-597.89" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#312e81">t &gt;= 90s]</text>
+</g>
+<!-- entry_from_6 -->
+<g id="node7" class="node">
+<title>entry_from_6</title>
+<polygon fill="#e0e7ff" stroke="#4338ca" points="545.94,-733.14 467.17,-701.14 545.94,-669.14 624.72,-701.14 545.94,-733.14"/>
+<polyline fill="none" stroke="#4338ca" points="478.28,-705.66 478.28,-696.62"/>
+<polyline fill="none" stroke="#4338ca" points="534.83,-673.66 557.06,-673.66"/>
+<polyline fill="none" stroke="#4338ca" points="613.6,-696.62 613.6,-705.66"/>
+<polyline fill="none" stroke="#4338ca" points="557.06,-728.62 534.83,-728.62"/>
+<text text-anchor="middle" x="545.94" y="-704.14" font-family="Helvetica,Arial,sans-serif" font-size="10.00">E_in (From S6)</text>
+<text text-anchor="middle" x="545.94" y="-692.14" font-family="Helvetica,Arial,sans-serif" font-size="10.00">AvoidChassis</text>
+</g>
+<!-- entry_from_6&#45;&gt;state_3 -->
+<g id="edge9" class="edge">
+<title>entry_from_6-&gt;state_3</title>
+<path fill="none" stroke="#4338ca" stroke-width="2" d="M529.71,-675.23C511.35,-647.06 481.27,-600.89 460.13,-568.46"/>
+<polygon fill="#4338ca" stroke="#4338ca" stroke-width="2" points="463.93,-567.88 455.54,-561.41 458.07,-571.7 463.93,-567.88"/>
+<text text-anchor="middle" x="531.49" y="-623.39" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#312e81">[P1 | t&gt;=85s]</text>
+<text text-anchor="middle" x="531.49" y="-613.19" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#312e81">path_clear</text>
+<text text-anchor="middle" x="531.49" y="-602.99" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#312e81">[tof &gt;= 300mm]</text>
+</g>
+</g>
+</svg>

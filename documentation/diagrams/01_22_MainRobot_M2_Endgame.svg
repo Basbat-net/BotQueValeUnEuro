@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="435pt" height="622pt" viewBox="0.00 0.00 435.19 621.67">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(25.2 596.47)">
+<title>MainRobot_M2_Endgame</title>
+<polygon fill="white" stroke="none" points="-25.2,25.2 -25.2,-596.47 409.99,-596.47 409.99,25.2 -25.2,25.2"/>
+<text text-anchor="middle" x="192.4" y="-555.57" font-family="Helvetica,Arial,sans-serif" font-size="13.00">[22] MainRobot - M2_Endgame: Artillery &amp; Throne Return</text>
+<!-- state_7 -->
+<g id="node1" class="node">
+<title>state_7</title>
+<path fill="#ffffff" stroke="#334155" d="M12,-344.77C12,-344.77 228.75,-344.77 228.75,-344.77 234.75,-344.77 240.75,-350.77 240.75,-356.77 240.75,-356.77 240.75,-384.77 240.75,-384.77 240.75,-390.77 234.75,-396.77 228.75,-396.77 228.75,-396.77 12,-396.77 12,-396.77 6,-396.77 0,-390.77 0,-384.77 0,-384.77 0,-356.77 0,-356.77 0,-350.77 6,-344.77 12,-344.77"/>
+<text text-anchor="middle" x="120.37" y="-383.77" font-family="Helvetica,Arial,sans-serif" font-size="10.00">[S7] FireArtillery [Attack: 85s..90s] &lt;&lt;ARTILLERY&gt;&gt;</text>
+<polyline fill="none" stroke="#334155" points="0,-376.77 240.75,-376.77"/>
+<text text-anchor="start" x="8" y="-363.77" font-family="Helvetica,Arial,sans-serif" font-size="10.00">Signal SIMA at 85s and launch 9x 45mm </text>
+<text text-anchor="start" x="8" y="-351.77" font-family="Helvetica,Arial,sans-serif" font-size="10.00"> foam balls into enemy Courtyard </text>
+</g>
+<!-- state_8 -->
+<g id="node2" class="node">
+<title>state_8</title>
+<path fill="#ffffff" stroke="#334155" d="M109.95,-184.97C109.95,-184.97 372.79,-184.97 372.79,-184.97 378.79,-184.97 384.79,-190.97 384.79,-196.97 384.79,-196.97 384.79,-224.97 384.79,-224.97 384.79,-230.97 378.79,-236.97 372.79,-236.97 372.79,-236.97 109.95,-236.97 109.95,-236.97 103.95,-236.97 97.95,-230.97 97.95,-224.97 97.95,-224.97 97.95,-196.97 97.95,-196.97 97.95,-190.97 103.95,-184.97 109.95,-184.97"/>
+<text text-anchor="middle" x="241.37" y="-223.97" font-family="Helvetica,Arial,sans-serif" font-size="10.00">[S8] ParkAndElevateGrail [Endgame: 90s..100s] &lt;&lt;ENDGAME&gt;&gt;</text>
+<polyline fill="none" stroke="#334155" points="97.95,-216.97 384.79,-216.97"/>
+<text text-anchor="start" x="105.95" y="-203.97" font-family="Helvetica,Arial,sans-serif" font-size="10.00">Put Grail on robot top (&gt;300mm, 25pt) </text>
+<text text-anchor="start" x="105.95" y="-191.97" font-family="Helvetica,Arial,sans-serif" font-size="10.00"> and park in Throne Room (10pt) </text>
+</g>
+<!-- state_7&#45;&gt;state_8 -->
+<g id="edge3" class="edge">
+<title>state_7-&gt;state_8</title>
+<path fill="none" stroke="#1e293b" d="M139.81,-344.42C160.19,-317.85 192.33,-275.93 214.98,-246.38"/>
+<polygon fill="#1e293b" stroke="#1e293b" points="217.75,-248.53 221.06,-238.46 212.2,-244.27 217.75,-248.53"/>
+<text text-anchor="middle" x="217.44" y="-303.62" font-family="Helvetica,Arial,sans-serif" font-size="8.50">[P1 | t&gt;=90s]</text>
+<text text-anchor="middle" x="217.44" y="-293.42" font-family="Helvetica,Arial,sans-serif" font-size="8.50">salvo_done</text>
+<text text-anchor="middle" x="217.44" y="-283.22" font-family="Helvetica,Arial,sans-serif" font-size="8.50">[balls == 0 ||</text>
+<text text-anchor="middle" x="217.44" y="-273.02" font-family="Helvetica,Arial,sans-serif" font-size="8.50">t &gt;= 90s]</text>
+</g>
+<!-- exit_to_10 -->
+<g id="node4" class="node">
+<title>exit_to_10</title>
+<polygon fill="#fee2e2" stroke="#dc2626" points="280.21,-77.67 202.54,-77.67 202.54,0 280.21,0 280.21,-77.67"/>
+<polyline fill="none" stroke="#dc2626" points="214.54,-77.67 202.54,-65.67"/>
+<polyline fill="none" stroke="#dc2626" points="202.54,-12 214.54,0"/>
+<polyline fill="none" stroke="#dc2626" points="268.21,0 280.21,-12"/>
+<polyline fill="none" stroke="#dc2626" points="280.21,-65.67 268.21,-77.67"/>
+<text text-anchor="middle" x="241.37" y="-41.83" font-family="Helvetica,Arial,sans-serif" font-size="10.00">S_out (To S10)</text>
+<text text-anchor="middle" x="241.37" y="-29.83" font-family="Helvetica,Arial,sans-serif" font-size="10.00">Cutoff100s</text>
+</g>
+<!-- state_8&#45;&gt;exit_to_10 -->
+<g id="edge4" class="edge">
+<title>state_8-&gt;exit_to_10</title>
+<path fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,2" d="M241.37,-184.5C241.37,-159.51 241.37,-120.74 241.37,-89.62"/>
+<polygon fill="#dc2626" stroke="#dc2626" stroke-width="2" points="244.87,-91.14 241.37,-81.14 237.87,-91.14 244.87,-91.14"/>
+<text text-anchor="middle" x="283.75" y="-143.82" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#dc2626">[P1 | t&gt;=100s]</text>
+<text text-anchor="middle" x="283.75" y="-133.62" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#dc2626">parked</text>
+<text text-anchor="middle" x="283.75" y="-123.42" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#dc2626">[in_throne_500x500 &amp;&amp;</text>
+<text text-anchor="middle" x="283.75" y="-113.22" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#dc2626">grail_top_z &gt; 300mm]</text>
+</g>
+<!-- entry_from_3 -->
+<g id="node3" class="node">
+<title>entry_from_3</title>
+<polygon fill="#e0e7ff" stroke="#4338ca" points="241.37,-547.67 162.59,-515.67 241.37,-483.67 320.15,-515.67 241.37,-547.67"/>
+<polyline fill="none" stroke="#4338ca" points="173.71,-520.19 173.71,-511.15"/>
+<polyline fill="none" stroke="#4338ca" points="230.26,-488.19 252.49,-488.19"/>
+<polyline fill="none" stroke="#4338ca" points="309.03,-511.15 309.03,-520.19"/>
+<polyline fill="none" stroke="#4338ca" points="252.49,-543.15 230.26,-543.15"/>
+<text text-anchor="middle" x="241.37" y="-518.67" font-family="Helvetica,Arial,sans-serif" font-size="10.00">E_in (From S3)</text>
+<text text-anchor="middle" x="241.37" y="-506.67" font-family="Helvetica,Arial,sans-serif" font-size="10.00">RoutePhase</text>
+</g>
+<!-- entry_from_3&#45;&gt;state_7 -->
+<g id="edge1" class="edge">
+<title>entry_from_3-&gt;state_7</title>
+<path fill="none" stroke="#4338ca" stroke-width="2" d="M221.66,-491.39C201.93,-468.09 171.36,-431.98 148.96,-405.53"/>
+<polygon fill="#4338ca" stroke="#4338ca" stroke-width="2" points="152.79,-404.64 143.66,-399.27 147.45,-409.17 152.79,-404.64"/>
+<text text-anchor="middle" x="206.67" y="-443.02" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#312e81">[P1 | t&gt;=85s]</text>
+<text text-anchor="middle" x="206.67" y="-432.82" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#312e81">[balls &gt; 0]</text>
+</g>
+<!-- entry_from_3&#45;&gt;state_8 -->
+<g id="edge2" class="edge">
+<title>entry_from_3-&gt;state_8</title>
+<path fill="none" stroke="#4338ca" stroke-width="2" d="M250.52,-487.06C257.81,-463.5 267.44,-428.58 271.37,-397.27 277.91,-345.26 264.39,-285.45 253.43,-248.18"/>
+<polygon fill="#4338ca" stroke="#4338ca" stroke-width="2" points="257.29,-248.81 251.02,-240.26 250.59,-250.85 257.29,-248.81"/>
+<text text-anchor="middle" x="295.26" y="-378.42" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#312e81">[P2 | t&gt;=90s]</text>
+<text text-anchor="middle" x="295.26" y="-368.22" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#312e81">[balls == 0 ||</text>
+<text text-anchor="middle" x="295.26" y="-358.02" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#312e81">t &gt;= 90s]</text>
+</g>
+</g>
+</svg>

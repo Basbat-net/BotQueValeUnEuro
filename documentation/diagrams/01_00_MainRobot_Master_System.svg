@@ -1,0 +1,301 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1305pt" height="1411pt" viewBox="0.00 0.00 1305.32 1411.20">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(25.2 1386)">
+<title>MainRobot</title>
+<polygon fill="white" stroke="none" points="-25.2,25.2 -25.2,-1386 1280.12,-1386 1280.12,25.2 -25.2,25.2"/>
+<text text-anchor="middle" x="627.46" y="-1345.1" font-family="Helvetica,Arial,sans-serif" font-size="13.00">[00] MainRobot - Master System</text>
+<g id="clust1" class="cluster">
+<title>cluster_0</title>
+<path fill="#f8fafc" stroke="#475569" stroke-dasharray="5,2" d="M20,-8C20,-8 985,-8 985,-8 991,-8 997,-14 997,-20 997,-20 997,-1214 997,-1214 997,-1220 991,-1226 985,-1226 985,-1226 20,-1226 20,-1226 14,-1226 8,-1220 8,-1214 8,-1214 8,-20 8,-20 8,-14 14,-8 20,-8"/>
+<text text-anchor="middle" x="502.5" y="-1212.55" font-family="Helvetica,Arial,sans-serif" font-size="10.50">&lt;&lt;Superstate&gt;&gt; ActiveMatchCluster</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_macro_0</title>
+<path fill="#eef2ff" stroke="#4338ca" stroke-width="2" stroke-dasharray="1,5" d="M28,-16C28,-16 513,-16 513,-16 519,-16 525,-22 525,-28 525,-28 525,-1004.8 525,-1004.8 525,-1010.8 519,-1016.8 513,-1016.8 513,-1016.8 28,-1016.8 28,-1016.8 22,-1016.8 16,-1010.8 16,-1004.8 16,-1004.8 16,-28 16,-28 16,-22 22,-16 28,-16"/>
+<text text-anchor="middle" x="270.5" y="-1003.8" font-family="Helvetica,Arial,sans-serif" font-size="10.00">[M1_BuildLoop] Camelot Build Loop (~15s/cycle)</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_macro_1</title>
+<path fill="#eef2ff" stroke="#4338ca" stroke-width="2" stroke-dasharray="1,5" d="M545,-231.8C545,-231.8 857,-231.8 857,-231.8 863,-231.8 869,-237.8 869,-243.8 869,-243.8 869,-636.8 869,-636.8 869,-642.8 863,-648.8 857,-648.8 857,-648.8 545,-648.8 545,-648.8 539,-648.8 533,-642.8 533,-636.8 533,-636.8 533,-243.8 533,-243.8 533,-237.8 539,-231.8 545,-231.8"/>
+<text text-anchor="middle" x="701" y="-635.8" font-family="Helvetica,Arial,sans-serif" font-size="10.00">[M2_Endgame] Artillery &amp; Throne Return</text>
+</g>
+<!-- state_0 -->
+<g id="node1" class="node">
+<title>state_0</title>
+<ellipse fill="#0f172a" stroke="black" cx="384" cy="-1317.4" rx="19.8" ry="19.8"/>
+<text text-anchor="middle" x="384" y="-1320.4" font-family="Helvetica,Arial,sans-serif" font-size="10.00" fill="#ffffff">S0</text>
+<text text-anchor="middle" x="384" y="-1308.4" font-family="Helvetica,Arial,sans-serif" font-size="10.00" fill="#ffffff">0s</text>
+</g>
+<!-- state_1 -->
+<g id="node3" class="node">
+<title>state_1</title>
+<path fill="#ffffff" stroke="#334155" d="M263.09,-1088.9C263.09,-1088.9 504.91,-1088.9 504.91,-1088.9 510.91,-1088.9 516.91,-1094.9 516.91,-1100.9 516.91,-1100.9 516.91,-1184.9 516.91,-1184.9 516.91,-1190.9 510.91,-1196.9 504.91,-1196.9 504.91,-1196.9 263.09,-1196.9 263.09,-1196.9 257.09,-1196.9 251.09,-1190.9 251.09,-1184.9 251.09,-1184.9 251.09,-1100.9 251.09,-1100.9 251.09,-1094.9 257.09,-1088.9 263.09,-1088.9"/>
+<text text-anchor="middle" x="384" y="-1183.9" font-family="Helvetica,Arial,sans-serif" font-size="10.00">[S1] LeaveGrailInCourtyard [Setup: 0s..5s] &lt;&lt;SETUP&gt;&gt;</text>
+<text text-anchor="middle" x="384" y="-1171.9" font-family="Helvetica,Arial,sans-serif" font-size="10.00">(Rule F.3 Deployed: &lt;=1400x350mm)</text>
+<polyline fill="none" stroke="#334155" points="251.09,-1164.9 516.91,-1164.9"/>
+<text text-anchor="start" x="259.09" y="-1151.9" font-family="Helvetica,Arial,sans-serif" font-size="10.00">+ grail_size : Cube = &gt;60mm_Min (Rule_E.2.b) </text>
+<text text-anchor="start" x="259.09" y="-1139.9" font-family="Helvetica,Arial,sans-serif" font-size="10.00">+ courtyard_stone : Elevation = Level1_110mm_Horiz (10pt) </text>
+<polyline fill="none" stroke="#334155" points="251.09,-1132.9 516.91,-1132.9"/>
+<text text-anchor="start" x="259.09" y="-1119.9" font-family="Helvetica,Arial,sans-serif" font-size="10.00">entry / pickFromThroneFloor() </text>
+<text text-anchor="start" x="259.09" y="-1107.9" font-family="Helvetica,Arial,sans-serif" font-size="10.00">do / placeOnCourtyardStone() </text>
+<text text-anchor="start" x="259.09" y="-1095.9" font-family="Helvetica,Arial,sans-serif" font-size="10.00">exit / openGripper() </text>
+</g>
+<!-- state_0&#45;&gt;state_1 -->
+<g id="edge1" class="edge">
+<title>state_0-&gt;state_1</title>
+<path fill="none" stroke="#1e293b" d="M384,-1297.28C384,-1275.95 384,-1240.29 384,-1208.72"/>
+<polygon fill="#1e293b" stroke="#1e293b" points="387.5,-1208.82 384,-1198.82 380.5,-1208.82 387.5,-1208.82"/>
+<text text-anchor="middle" x="421.84" y="-1256.95" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">[P1]</text>
+<text text-anchor="middle" x="421.84" y="-1246.75" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">cord_pulled</text>
+<text text-anchor="middle" x="421.84" y="-1236.55" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">[detached &gt;= 500mm]</text>
+</g>
+<!-- state_10 -->
+<g id="node2" class="node">
+<title>state_10</title>
+<path fill="#fee2e2" stroke="#dc2626" d="M1017.08,-30.5C1017.08,-30.5 1242.92,-30.5 1242.92,-30.5 1248.92,-30.5 1254.92,-36.5 1254.92,-42.5 1254.92,-42.5 1254.92,-114.5 1254.92,-114.5 1254.92,-120.5 1248.92,-126.5 1242.92,-126.5 1242.92,-126.5 1017.08,-126.5 1017.08,-126.5 1011.08,-126.5 1005.08,-120.5 1005.08,-114.5 1005.08,-114.5 1005.08,-42.5 1005.08,-42.5 1005.08,-36.5 1011.08,-30.5 1017.08,-30.5"/>
+<text text-anchor="middle" x="1130" y="-113.5" font-family="Helvetica,Arial,sans-serif" font-size="10.00">[S10] Cutoff100s [Armed: 0s..100s] &lt;&lt;CUTOFF&gt;&gt;</text>
+<text text-anchor="middle" x="1130" y="-101.5" font-family="Helvetica,Arial,sans-serif" font-size="10.00">(Rule F.3 Start: &lt;=1200x350mm)</text>
+<polyline fill="none" stroke="#dc2626" points="1005.08,-94.5 1254.92,-94.5"/>
+<text text-anchor="start" x="1013.08" y="-81.5" font-family="Helvetica,Arial,sans-serif" font-size="10.00">+ estop_button : RuleF4c = Red_D&gt;=20mm_H&lt;=375mm </text>
+<text text-anchor="start" x="1013.08" y="-69.5" font-family="Helvetica,Arial,sans-serif" font-size="10.00">+ match_cutoff : RuleH3 = All_Actuators_Off_At_100s </text>
+<polyline fill="none" stroke="#dc2626" points="1005.08,-62.5 1254.92,-62.5"/>
+<text text-anchor="start" x="1013.08" y="-49.5" font-family="Helvetica,Arial,sans-serif" font-size="10.00">entry / cutPowerAndRelease() </text>
+<text text-anchor="start" x="1013.08" y="-37.5" font-family="Helvetica,Arial,sans-serif" font-size="10.00">do / showFinalScore() </text>
+</g>
+<!-- state_2 -->
+<g id="node4" class="node">
+<title>state_2</title>
+<path fill="#ffffff" stroke="#334155" d="M263.28,-892.3C263.28,-892.3 504.72,-892.3 504.72,-892.3 510.72,-892.3 516.72,-898.3 516.72,-904.3 516.72,-904.3 516.72,-976.3 516.72,-976.3 516.72,-982.3 510.72,-988.3 504.72,-988.3 504.72,-988.3 263.28,-988.3 263.28,-988.3 257.28,-988.3 251.28,-982.3 251.28,-976.3 251.28,-976.3 251.28,-904.3 251.28,-904.3 251.28,-898.3 257.28,-892.3 263.28,-892.3"/>
+<text text-anchor="middle" x="384" y="-975.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">[S2] ScanTable [Phase: 5s..85s] &lt;&lt;PERCEPTION&gt;&gt;</text>
+<text text-anchor="middle" x="384" y="-963.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">(Rule F.3 Start: &lt;=1200x350mm)</text>
+<polyline fill="none" stroke="#334155" points="251.28,-956.3 516.72,-956.3"/>
+<text text-anchor="start" x="259.28" y="-943.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">+ quarry_pool : uint8 = 30_Stones_Total (ArUco_Tag_13) </text>
+<text text-anchor="start" x="259.28" y="-931.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">+ courtyard_cap : uint8 = &lt;=3_Stones_Buffered (Rule_E.1.b) </text>
+<text text-anchor="start" x="259.28" y="-919.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">+ beacon_mast : Height = 430+-5mm (Rule_F.6) </text>
+<polyline fill="none" stroke="#334155" points="251.28,-912.3 516.72,-912.3"/>
+<text text-anchor="start" x="259.28" y="-899.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">do / updateQuarryAndRampartMap() </text>
+</g>
+<!-- state_1&#45;&gt;state_2 -->
+<g id="edge2" class="edge">
+<title>state_1-&gt;state_2</title>
+<path fill="none" stroke="#1e293b" d="M384,-1088.41C384,-1061.07 384,-1027.75 384,-999.74"/>
+<polygon fill="#1e293b" stroke="#1e293b" points="387.5,-1000.01 384,-990.01 380.5,-1000.01 387.5,-1000.01"/>
+<text text-anchor="middle" x="418.46" y="-1047.75" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">[P1 | t&gt;=5s]</text>
+<text text-anchor="middle" x="418.46" y="-1037.55" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">pedestal_set</text>
+<text text-anchor="middle" x="418.46" y="-1027.35" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">[grail_in_courtyard]</text>
+</g>
+<!-- state_2&#45;&gt;state_10 -->
+<g id="edge16" class="edge">
+<title>state_2-&gt;state_10</title>
+<path fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,2" d="M997,-864.89C1002.07,-862.91 1006.75,-860.88 1011,-858.8 1070.61,-829.68 1117,-820.04 1117,-753.7 1117,-753.7 1117,-753.7 1117,-293.3 1117,-240.67 1120.97,-180.89 1124.53,-137.95"/>
+<polygon fill="#dc2626" stroke="#dc2626" stroke-width="2" points="1127.88,-139.86 1125.23,-129.6 1120.9,-139.27 1127.88,-139.86"/>
+<text text-anchor="middle" x="1142.26" y="-585.05" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#b91c1c">[P0 | t&gt;=100s]</text>
+<text text-anchor="middle" x="1142.26" y="-574.85" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#b91c1c">cutoff_irq</text>
+<text text-anchor="middle" x="1142.26" y="-564.65" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#b91c1c">[t &gt;= 100s ||</text>
+<text text-anchor="middle" x="1142.26" y="-554.45" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#b91c1c">estop_pressed]</text>
+</g>
+<!-- state_3 -->
+<g id="node5" class="node">
+<title>state_3</title>
+<polygon fill="#fef3c7" stroke="#d97706" stroke-width="2" points="373,-784.7 228.89,-752.7 373,-720.7 517.11,-752.7 373,-784.7"/>
+<text text-anchor="middle" x="373" y="-755.7" font-family="Helvetica,Arial,sans-serif" font-size="10.00">[S3] RoutePhase</text>
+<text text-anchor="middle" x="373" y="-743.7" font-family="Helvetica,Arial,sans-serif" font-size="10.00">[Phase: 5s..85s] &lt;&lt;ROUTER&gt;&gt;</text>
+</g>
+<!-- state_2&#45;&gt;state_3 -->
+<g id="edge3" class="edge">
+<title>state_2-&gt;state_3</title>
+<path fill="none" stroke="#1e293b" d="M347.48,-892.11C341.22,-881.66 335.66,-870.28 332.29,-858.8 325.46,-835.51 334.8,-810.11 346.25,-790.12"/>
+<polygon fill="#1e293b" stroke="#1e293b" points="349.13,-792.13 351.38,-781.78 343.16,-788.47 349.13,-792.13"/>
+<text text-anchor="middle" x="360.15" y="-851.15" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">[P1 | t&gt;=5s]</text>
+<text text-anchor="middle" x="360.15" y="-840.95" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">map_ready</text>
+<text text-anchor="middle" x="360.15" y="-830.75" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">[poses_updated]</text>
+</g>
+<!-- state_9 -->
+<g id="node11" class="node">
+<title>state_9</title>
+<path fill="#ecfeff" stroke="#0891b2" d="M586.82,-710.7C586.82,-710.7 833.18,-710.7 833.18,-710.7 839.18,-710.7 845.18,-716.7 845.18,-722.7 845.18,-722.7 845.18,-782.7 845.18,-782.7 845.18,-788.7 839.18,-794.7 833.18,-794.7 833.18,-794.7 586.82,-794.7 586.82,-794.7 580.82,-794.7 574.82,-788.7 574.82,-782.7 574.82,-782.7 574.82,-722.7 574.82,-722.7 574.82,-716.7 580.82,-710.7 586.82,-710.7"/>
+<text text-anchor="middle" x="710" y="-781.7" font-family="Helvetica,Arial,sans-serif" font-size="10.00">[S9] AvoidObstacle [Armed: 0s..100s] &lt;&lt;AVOIDANCE&gt;&gt;</text>
+<text text-anchor="middle" x="710" y="-769.7" font-family="Helvetica,Arial,sans-serif" font-size="10.00">(Rule F.3 Start: &lt;=1200x350mm)</text>
+<polyline fill="none" stroke="#0891b2" points="574.82,-762.7 845.18,-762.7"/>
+<text text-anchor="start" x="582.82" y="-749.7" font-family="Helvetica,Arial,sans-serif" font-size="10.00">+ lidar_threshold : Dist = Trigger &lt;=300mm / Clear &gt;=400mm </text>
+<polyline fill="none" stroke="#0891b2" points="574.82,-742.7 845.18,-742.7"/>
+<text text-anchor="start" x="582.82" y="-729.7" font-family="Helvetica,Arial,sans-serif" font-size="10.00">entry / brakeAndHold() </text>
+<text text-anchor="start" x="582.82" y="-717.7" font-family="Helvetica,Arial,sans-serif" font-size="10.00">do / replanDStarLite() </text>
+</g>
+<!-- state_2&#45;&gt;state_9 -->
+<g id="edge14" class="edge">
+<title>state_2-&gt;state_9</title>
+<path fill="none" stroke="#0891b2" stroke-width="2" stroke-dasharray="5,2" d="M517.04,-894.73C541.69,-884.36 566.68,-872.32 589,-858.8 614.73,-843.21 640.3,-822.05 661.27,-802.8"/>
+<polygon fill="#0891b2" stroke="#0891b2" stroke-width="2" points="662.52,-806.41 667.45,-797.03 657.75,-801.3 662.52,-806.41"/>
+<text text-anchor="middle" x="657.33" y="-851.15" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0e7490">[P0 | t&gt;=5s]</text>
+<text text-anchor="middle" x="657.33" y="-840.95" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0e7490">lidar_alert</text>
+<text text-anchor="middle" x="657.33" y="-830.75" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0e7490">[dist &lt;= 300mm]</text>
+</g>
+<!-- state_4 -->
+<g id="node6" class="node">
+<title>state_4</title>
+<path fill="#ffffff" stroke="#334155" d="M54.85,-382.3C54.85,-382.3 277.15,-382.3 277.15,-382.3 283.15,-382.3 289.15,-388.3 289.15,-394.3 289.15,-394.3 289.15,-478.3 289.15,-478.3 289.15,-484.3 283.15,-490.3 277.15,-490.3 277.15,-490.3 54.85,-490.3 54.85,-490.3 48.85,-490.3 42.85,-484.3 42.85,-478.3 42.85,-478.3 42.85,-394.3 42.85,-394.3 42.85,-388.3 48.85,-382.3 54.85,-382.3"/>
+<text text-anchor="middle" x="166" y="-477.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">[S4] GrabQuarryStones [Phase: 5s..85s] &lt;&lt;COLLECT&gt;&gt;</text>
+<text text-anchor="middle" x="166" y="-465.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">(Rule F.3 Deployed: &lt;=1400x350mm)</text>
+<polyline fill="none" stroke="#334155" points="42.85,-458.3 289.15,-458.3"/>
+<text text-anchor="start" x="50.85" y="-445.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">+ stone_box : Dim = 320x110x110mm_90g (Tag_13) </text>
+<text text-anchor="start" x="50.85" y="-433.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">- batch_size : uint8 = 3_Horiz_Stones_Per_Quarry </text>
+<polyline fill="none" stroke="#334155" points="42.85,-426.3 289.15,-426.3"/>
+<text text-anchor="start" x="50.85" y="-413.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">entry / deployForks1400mm() </text>
+<text text-anchor="start" x="50.85" y="-401.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">do / pull3StonesIntoBay() </text>
+<text text-anchor="start" x="50.85" y="-389.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">exit / retractForks1200mm() </text>
+</g>
+<!-- state_3&#45;&gt;state_4 -->
+<g id="edge6" class="edge">
+<title>state_3-&gt;state_4</title>
+<path fill="none" stroke="#d97706" d="M346.18,-726.53C332.23,-712.7 315.42,-694.81 302.36,-677.2 261.03,-621.44 222.81,-551.95 197.41,-502.14"/>
+<polygon fill="#d97706" stroke="#d97706" points="197.37,-502.07 191.1,-498.52 191.96,-491.36 198.24,-494.91 197.37,-502.07"/>
+<text text-anchor="middle" x="335.68" y="-669.55" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#92400e">[P3 | t&gt;=5s]</text>
+<text text-anchor="middle" x="335.68" y="-659.35" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#92400e">[quarry_stones &gt; 0]</text>
+</g>
+<!-- state_6 -->
+<g id="node8" class="node">
+<title>state_6</title>
+<path fill="#ffffff" stroke="#334155" d="M285.19,-252.3C285.19,-252.3 504.81,-252.3 504.81,-252.3 510.81,-252.3 516.81,-258.3 516.81,-264.3 516.81,-264.3 516.81,-324.3 516.81,-324.3 516.81,-330.3 510.81,-336.3 504.81,-336.3 504.81,-336.3 285.19,-336.3 285.19,-336.3 279.19,-336.3 273.19,-330.3 273.19,-324.3 273.19,-324.3 273.19,-264.3 273.19,-264.3 273.19,-258.3 279.19,-252.3 285.19,-252.3"/>
+<text text-anchor="middle" x="395" y="-323.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">[S6] StealStone [LatePhase: 45s..85s] &lt;&lt;STEAL&gt;&gt;</text>
+<text text-anchor="middle" x="395" y="-311.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">(Rule F.3 Deployed: &lt;=1400x350mm)</text>
+<polyline fill="none" stroke="#334155" points="273.19,-304.3 516.81,-304.3"/>
+<text text-anchor="start" x="281.19" y="-291.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">+ quarries_empty : bool = true (Mandatory_Rule_E.1.b) </text>
+<text text-anchor="start" x="281.19" y="-279.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">- safe_standoff : Dist = 150mm_No_Castle_Crash </text>
+<polyline fill="none" stroke="#334155" points="273.19,-272.3 516.81,-272.3"/>
+<text text-anchor="start" x="281.19" y="-259.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">do / extractExposedStone() </text>
+</g>
+<!-- state_3&#45;&gt;state_6 -->
+<g id="edge7" class="edge">
+<title>state_3-&gt;state_6</title>
+<path fill="none" stroke="#d97706" d="M375.75,-720.91C376.88,-707.49 378.12,-691.58 379,-677.2 386.15,-560.35 391.04,-423.2 393.4,-349.21"/>
+<polygon fill="#d97706" stroke="#d97706" points="393.39,-349.48 389.58,-343.35 393.76,-337.48 397.57,-343.6 393.39,-349.48"/>
+<text text-anchor="middle" x="428.76" y="-579.95" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#92400e">[P4 | t&gt;=45s]</text>
+<text text-anchor="middle" x="428.76" y="-569.75" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#92400e">[quarry_stones == 0 &amp;&amp;</text>
+<text text-anchor="middle" x="428.76" y="-559.55" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#92400e">enemy_castle_open]</text>
+</g>
+<!-- state_7 -->
+<g id="node9" class="node">
+<title>state_7</title>
+<path fill="#ffffff" stroke="#334155" d="M552.68,-524.3C552.68,-524.3 817.32,-524.3 817.32,-524.3 823.32,-524.3 829.32,-530.3 829.32,-536.3 829.32,-536.3 829.32,-608.3 829.32,-608.3 829.32,-614.3 823.32,-620.3 817.32,-620.3 817.32,-620.3 552.68,-620.3 552.68,-620.3 546.68,-620.3 540.68,-614.3 540.68,-608.3 540.68,-608.3 540.68,-536.3 540.68,-536.3 540.68,-530.3 546.68,-524.3 552.68,-524.3"/>
+<text text-anchor="middle" x="685" y="-607.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">[S7] FireArtillery [Attack: 85s..90s] &lt;&lt;ARTILLERY&gt;&gt;</text>
+<text text-anchor="middle" x="685" y="-595.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">(Rule F.3 Deployed: &lt;=1400x350mm)</text>
+<polyline fill="none" stroke="#334155" points="540.68,-588.3 829.32,-588.3"/>
+<text text-anchor="start" x="548.68" y="-575.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">+ ammo_loaded : uint8 = 9_Balls (D45mm_Foam, Team_Max_10) </text>
+<text text-anchor="start" x="548.68" y="-563.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">+ courtyard_pts : Score = 5pt (&gt;=1_Ball) + 15pt (&gt;=3_Balls) </text>
+<polyline fill="none" stroke="#334155" points="540.68,-556.3 829.32,-556.3"/>
+<text text-anchor="start" x="548.68" y="-543.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">entry / send85sSyncRF() </text>
+<text text-anchor="start" x="548.68" y="-531.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">do / launch9FoamBalls() </text>
+</g>
+<!-- state_3&#45;&gt;state_7 -->
+<g id="edge4" class="edge">
+<title>state_3-&gt;state_7</title>
+<path fill="none" stroke="#d97706" d="M412.52,-729.11C457.2,-703.55 531.52,-661.06 591.27,-626.9"/>
+<polygon fill="#d97706" stroke="#d97706" points="591.04,-627.02 594.27,-620.57 601.46,-621.07 598.24,-627.52 591.04,-627.02"/>
+<text text-anchor="middle" x="560.53" y="-669.55" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#92400e">[P1 | t&gt;=85s]</text>
+<text text-anchor="middle" x="560.53" y="-659.35" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#92400e">[balls &gt; 0]</text>
+</g>
+<!-- state_8 -->
+<g id="node10" class="node">
+<title>state_8</title>
+<path fill="#ffffff" stroke="#334155" d="M586.58,-240.3C586.58,-240.3 849.42,-240.3 849.42,-240.3 855.42,-240.3 861.42,-246.3 861.42,-252.3 861.42,-252.3 861.42,-336.3 861.42,-336.3 861.42,-342.3 855.42,-348.3 849.42,-348.3 849.42,-348.3 586.58,-348.3 586.58,-348.3 580.58,-348.3 574.58,-342.3 574.58,-336.3 574.58,-336.3 574.58,-252.3 574.58,-252.3 574.58,-246.3 580.58,-240.3 586.58,-240.3"/>
+<text text-anchor="middle" x="718" y="-335.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">[S8] ParkAndElevateGrail [Endgame: 90s..100s] &lt;&lt;ENDGAME&gt;&gt;</text>
+<text text-anchor="middle" x="718" y="-323.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">(Rule F.3 Start: &lt;=1200x350mm)</text>
+<polyline fill="none" stroke="#334155" points="574.58,-316.3 861.42,-316.3"/>
+<text text-anchor="start" x="582.58" y="-303.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">+ throne_500x500 : Arrival = Full_In=10pt / Part_In=5pt </text>
+<text text-anchor="start" x="582.58" y="-291.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">+ grail_top_z : 300..350mm = 25pt_Level4_Free_Of_Actuators </text>
+<polyline fill="none" stroke="#334155" points="574.58,-284.3 861.42,-284.3"/>
+<text text-anchor="start" x="582.58" y="-271.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">entry / retrieveCourtyardGrail() </text>
+<text text-anchor="start" x="582.58" y="-259.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">do / liftToTopSupportOver300mm() </text>
+<text text-anchor="start" x="582.58" y="-247.3" font-family="Helvetica,Arial,sans-serif" font-size="10.00">exit / stopInsideThrone500x500() </text>
+</g>
+<!-- state_3&#45;&gt;state_8 -->
+<g id="edge5" class="edge">
+<title>state_3-&gt;state_8</title>
+<path fill="none" stroke="#d97706" d="M432.8,-733.56C459.62,-725.78 491.75,-716.95 521,-710.2 595.17,-693.08 809.24,-707.25 858,-648.8 930.18,-562.28 843.86,-433.97 778.31,-358.07"/>
+<polygon fill="#d97706" stroke="#d97706" points="778.54,-358.33 771.58,-356.45 770.63,-349.3 777.59,-351.18 778.54,-358.33"/>
+<text text-anchor="middle" x="907.5" y="-579.95" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#92400e">[P2 | t&gt;=90s]</text>
+<text text-anchor="middle" x="907.5" y="-569.75" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#92400e">[balls == 0 ||</text>
+<text text-anchor="middle" x="907.5" y="-559.55" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#92400e">t &gt;= 90s]</text>
+</g>
+<!-- state_4&#45;&gt;state_4 -->
+<g id="edge8" class="edge">
+<title>state_4-&gt;state_4</title>
+<path fill="none" stroke="#2563eb" stroke-dasharray="5,2" d="M289.62,-461.58C322.36,-460.13 347.15,-451.71 347.15,-436.3 347.15,-422.7 327.83,-414.54 300.77,-411.82"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="301.35,-408.35 291.13,-411.13 300.85,-415.33 301.35,-408.35"/>
+<text text-anchor="middle" x="382.02" y="-449.05" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#1d4ed8">[P2 | t&gt;=5s | max=2]</text>
+<text text-anchor="middle" x="382.02" y="-438.85" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#1d4ed8">slip</text>
+<text text-anchor="middle" x="382.02" y="-428.65" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#1d4ed8">[misaligned]</text>
+<text text-anchor="middle" x="382.02" y="-418.45" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#1d4ed8">-&gt; realign()</text>
+</g>
+<!-- state_5 -->
+<g id="node7" class="node">
+<title>state_5</title>
+<path fill="#ffffff" stroke="#334155" d="M36.48,-24.5C36.48,-24.5 259.52,-24.5 259.52,-24.5 265.52,-24.5 271.52,-30.5 271.52,-36.5 271.52,-36.5 271.52,-120.5 271.52,-120.5 271.52,-126.5 265.52,-132.5 259.52,-132.5 259.52,-132.5 36.48,-132.5 36.48,-132.5 30.48,-132.5 24.48,-126.5 24.48,-120.5 24.48,-120.5 24.48,-36.5 24.48,-36.5 24.48,-30.5 30.48,-24.5 36.48,-24.5"/>
+<text text-anchor="middle" x="148" y="-119.5" font-family="Helvetica,Arial,sans-serif" font-size="10.00">[S5] BuildRampart [Phase: 5s..85s] &lt;&lt;BUILDER&gt;&gt;</text>
+<text text-anchor="middle" x="148" y="-107.5" font-family="Helvetica,Arial,sans-serif" font-size="10.00">(Rule F.3 Deployed: &lt;=1400x350mm)</text>
+<polyline fill="none" stroke="#334155" points="24.48,-100.5 271.52,-100.5"/>
+<text text-anchor="start" x="32.48" y="-87.5" font-family="Helvetica,Arial,sans-serif" font-size="10.00">+ gate_200x400 : 2_Vert+1_Horiz = 20pt (Max_1_Gate) </text>
+<text text-anchor="start" x="32.48" y="-75.5" font-family="Helvetica,Arial,sans-serif" font-size="10.00">+ wall_200x400 : 3_Horiz_Stack = 5pt (+1pt/stone) </text>
+<text text-anchor="start" x="32.48" y="-63.5" font-family="Helvetica,Arial,sans-serif" font-size="10.00">+ tower_D200mm : 1_Vert_Stone = 5pt (+1pt/stone) </text>
+<polyline fill="none" stroke="#334155" points="24.48,-56.5 271.52,-56.5"/>
+<text text-anchor="start" x="32.48" y="-43.5" font-family="Helvetica,Arial,sans-serif" font-size="10.00">do / stackStonesInZone() </text>
+<text text-anchor="start" x="32.48" y="-31.5" font-family="Helvetica,Arial,sans-serif" font-size="10.00">exit / releaseActuators() </text>
+</g>
+<!-- state_4&#45;&gt;state_5 -->
+<g id="edge9" class="edge">
+<title>state_4-&gt;state_5</title>
+<path fill="none" stroke="#1e293b" d="M163.31,-382.03C160.09,-318.53 154.73,-212.46 151.28,-144.28"/>
+<polygon fill="#1e293b" stroke="#1e293b" points="154.78,-144.16 150.77,-134.35 147.78,-144.52 154.78,-144.16"/>
+<text text-anchor="middle" x="197.87" y="-301.95" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">[P1 | t&gt;=5s]</text>
+<text text-anchor="middle" x="197.87" y="-291.75" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">loaded</text>
+<text text-anchor="middle" x="197.87" y="-281.55" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">[carried_stones &lt;= 3]</text>
+</g>
+<!-- state_5&#45;&gt;state_2 -->
+<g id="edge11" class="edge">
+<title>state_5-&gt;state_2</title>
+<path fill="none" stroke="#1e293b" d="M115.45,-132.9C71.84,-211.19 3.46,-361.81 36,-490.8 73.59,-639.81 100.97,-677.69 200,-795.2 228.8,-829.38 266.89,-860.82 300.93,-885.56"/>
+<polygon fill="#1e293b" stroke="#1e293b" points="298.56,-888.16 308.72,-891.14 302.64,-882.47 298.56,-888.16"/>
+<text text-anchor="middle" x="118.53" y="-579.95" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">[P1 | t&gt;=5s]</text>
+<text text-anchor="middle" x="118.53" y="-569.75" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">placed</text>
+<text text-anchor="middle" x="118.53" y="-559.55" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">[actuators_free]</text>
+</g>
+<!-- state_6&#45;&gt;state_5 -->
+<g id="edge10" class="edge">
+<title>state_6-&gt;state_5</title>
+<path fill="none" stroke="#1e293b" d="M347.08,-251.82C310.41,-220.08 259.29,-175.83 218.03,-140.12"/>
+<polygon fill="#1e293b" stroke="#1e293b" points="220.38,-137.53 210.53,-133.63 215.8,-142.82 220.38,-137.53"/>
+<text text-anchor="middle" x="326.9" y="-194.05" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">[P1 | t&gt;=45s]</text>
+<text text-anchor="middle" x="326.9" y="-183.85" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">acquired</text>
+<text text-anchor="middle" x="326.9" y="-173.65" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">[no_castle_contact]</text>
+</g>
+<!-- state_7&#45;&gt;state_8 -->
+<g id="edge12" class="edge">
+<title>state_7-&gt;state_8</title>
+<path fill="none" stroke="#1e293b" d="M690.67,-523.85C696.08,-478.67 704.25,-410.3 710.25,-360.1"/>
+<polygon fill="#1e293b" stroke="#1e293b" points="713.72,-360.57 711.43,-350.23 706.77,-359.74 713.72,-360.57"/>
+<text text-anchor="middle" x="729.5" y="-449.05" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">[P1 | t&gt;=90s]</text>
+<text text-anchor="middle" x="729.5" y="-438.85" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">salvo_done</text>
+<text text-anchor="middle" x="729.5" y="-428.65" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">[balls == 0 ||</text>
+<text text-anchor="middle" x="729.5" y="-418.45" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">t &gt;= 90s]</text>
+</g>
+<!-- state_8&#45;&gt;state_10 -->
+<g id="edge13" class="edge">
+<title>state_8-&gt;state_10</title>
+<path fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,2" d="M820.9,-239.9C884.36,-206.97 965.41,-164.91 1028.59,-132.12"/>
+<polygon fill="#dc2626" stroke="#dc2626" stroke-width="2" points="1028.62,-136.05 1035.89,-128.34 1025.4,-129.84 1028.62,-136.05"/>
+<text text-anchor="middle" x="1003.28" y="-199.15" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#b91c1c">[P1 | t&gt;=100s]</text>
+<text text-anchor="middle" x="1003.28" y="-188.95" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#b91c1c">parked</text>
+<text text-anchor="middle" x="1003.28" y="-178.75" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#b91c1c">[in_throne_500x500 &amp;&amp;</text>
+<text text-anchor="middle" x="1003.28" y="-168.55" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#b91c1c">grail_top_z &gt; 300mm]</text>
+</g>
+<!-- state_9&#45;&gt;state_2 -->
+<g id="edge15" class="edge">
+<title>state_9-&gt;state_2</title>
+<path fill="none" stroke="#1e293b" d="M585.09,-795.1C561.9,-804.69 538.35,-815.78 517.25,-828.2 490.55,-843.91 463.79,-864.93 441.34,-884.46"/>
+<polygon fill="#1e293b" stroke="#1e293b" points="439.27,-881.62 434.08,-890.86 443.9,-886.87 439.27,-881.62"/>
+<text text-anchor="middle" x="546.12" y="-851.15" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">[P1 | t&gt;=5s]</text>
+<text text-anchor="middle" x="546.12" y="-840.95" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">path_clear</text>
+<text text-anchor="middle" x="546.12" y="-830.75" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">[dist &gt;= 400mm]</text>
+</g>
+</g>
+</svg>

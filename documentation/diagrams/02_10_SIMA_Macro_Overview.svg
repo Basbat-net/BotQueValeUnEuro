@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="602pt" height="790pt" viewBox="0.00 0.00 601.96 789.80">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(25.2 764.6)">
+<title>SIMA</title>
+<polygon fill="white" stroke="none" points="-25.2,25.2 -25.2,-764.6 576.76,-764.6 576.76,25.2 -25.2,25.2"/>
+<text text-anchor="middle" x="275.78" y="-723.7" font-family="Helvetica,Arial,sans-serif" font-size="13.00">[10] SIMA - Macro Overview</text>
+<g id="clust1" class="cluster">
+<title>cluster_0</title>
+<path fill="#f8fafc" stroke="#475569" stroke-dasharray="5,2" d="M20,-8C20,-8 268,-8 268,-8 274,-8 280,-14 280,-20 280,-20 280,-592.6 280,-592.6 280,-598.6 274,-604.6 268,-604.6 268,-604.6 20,-604.6 20,-604.6 14,-604.6 8,-598.6 8,-592.6 8,-592.6 8,-20 8,-20 8,-14 14,-8 20,-8"/>
+<text text-anchor="middle" x="144" y="-591.15" font-family="Helvetica,Arial,sans-serif" font-size="10.50">&lt;&lt;Superstate&gt;&gt; SimaAttackCluster</text>
+</g>
+<!-- state_0 -->
+<g id="node1" class="node">
+<title>state_0</title>
+<ellipse fill="#0f172a" stroke="black" cx="153" cy="-696" rx="19.8" ry="19.8"/>
+<text text-anchor="middle" x="153" y="-699" font-family="Helvetica,Arial,sans-serif" font-size="10.00" fill="#ffffff">S0</text>
+<text text-anchor="middle" x="153" y="-687" font-family="Helvetica,Arial,sans-serif" font-size="10.00" fill="#ffffff">0s</text>
+</g>
+<!-- state_1 -->
+<g id="node3" class="node">
+<title>state_1</title>
+<path fill="#fef9c3" stroke="#ca8a04" d="M46.85,-523.5C46.85,-523.5 259.15,-523.5 259.15,-523.5 265.15,-523.5 271.15,-529.5 271.15,-535.5 271.15,-535.5 271.15,-563.5 271.15,-563.5 271.15,-569.5 265.15,-575.5 259.15,-575.5 259.15,-575.5 46.85,-575.5 46.85,-575.5 40.85,-575.5 34.85,-569.5 34.85,-563.5 34.85,-563.5 34.85,-535.5 34.85,-535.5 34.85,-529.5 40.85,-523.5 46.85,-523.5"/>
+<text text-anchor="middle" x="153" y="-562.5" font-family="Helvetica,Arial,sans-serif" font-size="10.00">[S1] Wait85sGate [Lockout: 0s..85s] &lt;&lt;LOCKOUT&gt;&gt;</text>
+<polyline fill="none" stroke="#ca8a04" points="34.85,-555.5 271.15,-555.5"/>
+<text text-anchor="start" x="42.85" y="-542.5" font-family="Helvetica,Arial,sans-serif" font-size="10.00">Hold inside 200x300mm Stable until 85s </text>
+<text text-anchor="start" x="42.85" y="-530.5" font-family="Helvetica,Arial,sans-serif" font-size="10.00"> (early exit = removed) </text>
+</g>
+<!-- state_0&#45;&gt;state_1 -->
+<g id="edge1" class="edge">
+<title>state_0-&gt;state_1</title>
+<path fill="none" stroke="#1e293b" d="M153,-675.81C153,-653.31 153,-615.5 153,-587.28"/>
+<polygon fill="#1e293b" stroke="#1e293b" points="156.5,-587.37 153,-577.37 149.5,-587.37 156.5,-587.37"/>
+<text text-anchor="middle" x="190.84" y="-635.55" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">[P1]</text>
+<text text-anchor="middle" x="190.84" y="-625.35" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">cord_pulled</text>
+<text text-anchor="middle" x="190.84" y="-615.15" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">[detached &gt;= 500mm]</text>
+</g>
+<!-- state_7 -->
+<g id="node2" class="node">
+<title>state_7</title>
+<path fill="#fee2e2" stroke="#dc2626" d="M344.44,-16.5C344.44,-16.5 539.56,-16.5 539.56,-16.5 545.56,-16.5 551.56,-22.5 551.56,-28.5 551.56,-28.5 551.56,-56.5 551.56,-56.5 551.56,-62.5 545.56,-68.5 539.56,-68.5 539.56,-68.5 344.44,-68.5 344.44,-68.5 338.44,-68.5 332.44,-62.5 332.44,-56.5 332.44,-56.5 332.44,-28.5 332.44,-28.5 332.44,-22.5 338.44,-16.5 344.44,-16.5"/>
+<text text-anchor="middle" x="442" y="-55.5" font-family="Helvetica,Arial,sans-serif" font-size="10.00">[S7] Cutoff100s [Armed: 0s..100s] &lt;&lt;CUTOFF&gt;&gt;</text>
+<polyline fill="none" stroke="#dc2626" points="332.44,-48.5 551.56,-48.5"/>
+<text text-anchor="start" x="340.44" y="-35.5" font-family="Helvetica,Arial,sans-serif" font-size="10.00">Cut motors at 100s while passive </text>
+<text text-anchor="start" x="340.44" y="-23.5" font-family="Helvetica,Arial,sans-serif" font-size="10.00"> ratchet holds final pose </text>
+</g>
+<!-- state_1&#45;&gt;state_7 -->
+<g id="edge7" class="edge">
+<title>state_1-&gt;state_7</title>
+<path fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,2" d="M280,-447.82C285.79,-440.9 291.18,-433.75 296,-426.4 371.62,-311.18 416.4,-151.09 433.71,-80.01"/>
+<polygon fill="#dc2626" stroke="#dc2626" stroke-width="2" points="436.72,-82.47 435.64,-71.93 429.91,-80.84 436.72,-82.47"/>
+<text text-anchor="middle" x="387.08" y="-332.75" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#b91c1c">[P0 | t&gt;=100s]</text>
+<text text-anchor="middle" x="387.08" y="-322.55" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#b91c1c">cutoff_irq</text>
+<text text-anchor="middle" x="387.08" y="-312.35" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#b91c1c">[t &gt;= 100s ||</text>
+<text text-anchor="middle" x="387.08" y="-302.15" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#b91c1c">estop_pressed]</text>
+</g>
+<!-- state_2 -->
+<g id="node4" class="node">
+<title>state_2</title>
+<path fill="#ffffff" stroke="#334155" d="M51.01,-373.9C51.01,-373.9 254.99,-373.9 254.99,-373.9 260.99,-373.9 266.99,-379.9 266.99,-385.9 266.99,-385.9 266.99,-413.9 266.99,-413.9 266.99,-419.9 260.99,-425.9 254.99,-425.9 254.99,-425.9 51.01,-425.9 51.01,-425.9 45.01,-425.9 39.01,-419.9 39.01,-413.9 39.01,-413.9 39.01,-385.9 39.01,-385.9 39.01,-379.9 45.01,-373.9 51.01,-373.9"/>
+<text text-anchor="middle" x="153" y="-412.9" font-family="Helvetica,Arial,sans-serif" font-size="10.00">[S2] Fire1Ball [Attack: 85s..90s] &lt;&lt;ARTILLERY&gt;&gt;</text>
+<polyline fill="none" stroke="#334155" points="39.01,-405.9 266.99,-405.9"/>
+<text text-anchor="start" x="47.01" y="-392.9" font-family="Helvetica,Arial,sans-serif" font-size="10.00">Exit Stable at 85s and launch 1x 45mm </text>
+<text text-anchor="start" x="47.01" y="-380.9" font-family="Helvetica,Arial,sans-serif" font-size="10.00"> foam ball into Courtyard </text>
+</g>
+<!-- state_1&#45;&gt;state_2 -->
+<g id="edge2" class="edge">
+<title>state_1-&gt;state_2</title>
+<path fill="none" stroke="#1e293b" d="M153,-523.13C153,-499.43 153,-463.82 153,-437.13"/>
+<polygon fill="#1e293b" stroke="#1e293b" points="156.5,-437.46 153,-427.46 149.5,-437.46 156.5,-437.46"/>
+<text text-anchor="middle" x="185.34" y="-482.35" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">[P1 | t&gt;=85s]</text>
+<text text-anchor="middle" x="185.34" y="-472.15" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">window_open</text>
+<text text-anchor="middle" x="185.34" y="-461.95" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">[wheels_unlocked]</text>
+</g>
+<!-- state_1000 -->
+<g id="node5" class="node">
+<title>state_1000</title>
+<polygon fill="#eef2ff" stroke="#4338ca" stroke-width="2" points="33.9,-166.1 33.9,-266.1 272.1,-266.1 272.1,-166.1 33.9,-166.1"/>
+<text text-anchor="middle" x="153" y="-253.1" font-family="Helvetica,Arial,sans-serif" font-size="10.00">[M1_Engage] Joust &amp; Moat Capture [Phase: 90s..100s]</text>
+<text text-anchor="middle" x="153" y="-241.1" font-family="Helvetica,Arial,sans-serif" font-size="10.00">&lt;&lt;MACRO - Ref: 21_SIMA.url&gt;&gt;</text>
+<polyline fill="none" stroke="#4338ca" stroke-width="2" points="33.9,-234.1 272.1,-234.1"/>
+<text text-anchor="start" x="41.9" y="-221.1" font-family="Helvetica,Arial,sans-serif" font-size="10.00">Summary: Check enemy SIMA range </text>
+<text text-anchor="start" x="41.9" y="-209.1" font-family="Helvetica,Arial,sans-serif" font-size="10.00"> (&lt;=800mm); touch with RAL4010 lance </text>
+<text text-anchor="start" x="41.9" y="-197.1" font-family="Helvetica,Arial,sans-serif" font-size="10.00"> (5pt) or park in Moat (5pt) </text>
+<text text-anchor="start" x="41.9" y="-185.1" font-family="Helvetica,Arial,sans-serif" font-size="10.00">States: S3:RouteTarget, S4:JoustSima, </text>
+<text text-anchor="start" x="41.9" y="-173.1" font-family="Helvetica,Arial,sans-serif" font-size="10.00"> S5:OccupyMoat </text>
+</g>
+<!-- state_2&#45;&gt;state_1000 -->
+<g id="edge3" class="edge">
+<title>state_2-&gt;state_1000</title>
+<path fill="none" stroke="#1e293b" d="M153,-373.62C153,-348.92 153,-310.38 153,-277.73"/>
+<polygon fill="#1e293b" stroke="#1e293b" points="156.5,-277.97 153,-267.97 149.5,-277.97 156.5,-277.97"/>
+<text text-anchor="middle" x="175.17" y="-332.75" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">[P1 | t&gt;=90s]</text>
+<text text-anchor="middle" x="175.17" y="-322.55" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">shot_done</text>
+<text text-anchor="middle" x="175.17" y="-312.35" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">[launched ||</text>
+<text text-anchor="middle" x="175.17" y="-302.15" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">t &gt;= 90s]</text>
+</g>
+<!-- state_1000&#45;&gt;state_7 -->
+<g id="edge4" class="edge">
+<title>state_1000-&gt;state_7</title>
+<path fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,2" d="M210.2,-165.72C236.64,-144.41 269.13,-120.23 300.76,-102 319.28,-91.32 340.12,-81.58 359.99,-73.23"/>
+<polygon fill="#dc2626" stroke="#dc2626" stroke-width="2" points="359.88,-77.06 367.79,-70.02 357.21,-70.59 359.88,-77.06"/>
+<text text-anchor="middle" x="350.88" y="-124.95" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#b91c1c">[P1]</text>
+<text text-anchor="middle" x="350.88" y="-114.75" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#b91c1c">[t&gt;=100s: contact_held]</text>
+<text text-anchor="middle" x="350.88" y="-104.55" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#b91c1c">OR [t&gt;=100s: in_moat_zone]</text>
+</g>
+<!-- state_6 -->
+<g id="node6" class="node">
+<title>state_6</title>
+<path fill="#ecfeff" stroke="#0891b2" d="M28.11,-16.5C28.11,-16.5 259.89,-16.5 259.89,-16.5 265.89,-16.5 271.89,-22.5 271.89,-28.5 271.89,-28.5 271.89,-56.5 271.89,-56.5 271.89,-62.5 265.89,-68.5 259.89,-68.5 259.89,-68.5 28.11,-68.5 28.11,-68.5 22.11,-68.5 16.11,-62.5 16.11,-56.5 16.11,-56.5 16.11,-28.5 16.11,-28.5 16.11,-22.5 22.11,-16.5 28.11,-16.5"/>
+<text text-anchor="middle" x="144" y="-55.5" font-family="Helvetica,Arial,sans-serif" font-size="10.00">[S6] AvoidChassis [Armed: 85s..100s] &lt;&lt;AVOIDANCE&gt;&gt;</text>
+<polyline fill="none" stroke="#0891b2" points="16.11,-48.5 271.89,-48.5"/>
+<text text-anchor="start" x="24.11" y="-35.5" font-family="Helvetica,Arial,sans-serif" font-size="10.00">Yield and sidestep Main Robot when </text>
+<text text-anchor="start" x="24.11" y="-23.5" font-family="Helvetica,Arial,sans-serif" font-size="10.00"> front ToF &lt;=200mm </text>
+</g>
+<!-- state_1000&#45;&gt;state_6 -->
+<g id="edge5" class="edge">
+<title>state_1000-&gt;state_6</title>
+<path fill="none" stroke="#0891b2" stroke-width="2" stroke-dasharray="5,2" d="M87.37,-165.76C78.31,-155.84 70.33,-144.7 65.09,-132.6 59.68,-120.12 58.97,-114.15 65.09,-102 70.09,-92.06 77.67,-83.39 86.19,-75.98"/>
+<polygon fill="#0891b2" stroke="#0891b2" stroke-width="2" points="86.95,-79.85 92.59,-70.88 82.59,-74.38 86.95,-79.85"/>
+<text text-anchor="middle" x="92.54" y="-124.95" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0e7490">[P0 | t&gt;=85s]</text>
+<text text-anchor="middle" x="92.54" y="-114.75" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0e7490">tof_alert</text>
+<text text-anchor="middle" x="92.54" y="-104.55" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0e7490">[tof &lt;= 200mm]</text>
+</g>
+<!-- state_6&#45;&gt;state_1000 -->
+<g id="edge6" class="edge">
+<title>state_6-&gt;state_1000</title>
+<path fill="none" stroke="#1e293b" d="M145.33,-68.87C146.51,-91.35 148.28,-125.08 149.82,-154.48"/>
+<polygon fill="#1e293b" stroke="#1e293b" points="146.32,-154.61 150.34,-164.41 153.31,-154.25 146.32,-154.61"/>
+<text text-anchor="middle" x="175.96" y="-124.95" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">[P1 | t&gt;=85s]</text>
+<text text-anchor="middle" x="175.96" y="-114.75" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">path_clear</text>
+<text text-anchor="middle" x="175.96" y="-104.55" font-family="Helvetica,Arial,sans-serif" font-size="8.50" fill="#0f172a">[tof &gt;= 300mm]</text>
+</g>
+</g>
+</svg>
