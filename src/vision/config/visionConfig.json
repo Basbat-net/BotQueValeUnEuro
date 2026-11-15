@@ -1,0 +1,25 @@
+{
+  "frameSource": {
+    "mode": "camera",
+    "cameraIndex": 0,
+    "videoPath": "",
+    "imagesFolder": "",
+    "widthPx": 1280,
+    "heightPx": 720,
+    "imagesPeriodMs": 100
+  },
+  "calibrationBoard": {
+    "innerCornersX": 9,
+    "innerCornersY": 6,
+    "squareSizeMm": 25.0,
+    "requiredViews": 20,
+    "minimumViews": 5,
+    "captureIntervalMs": 1500,
+    "subPixHalfWindowPx": 11,
+    "subPixMaxIterations": 30,
+    "subPixEpsilonPx": 0.001
+  },
+  "calibrationFilePath": "config/cameraCalibration.json",
+  "showWindow": true,
+  "testMaxFrames": 300
+}
