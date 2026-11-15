@@ -1,6 +1,14 @@
 # BotQueValeUnEuro
 Repositorio oficial del Crea para competiciones de robotica
 
+## Using Claude Code with this repo
+
+The shared setup is in `.claude/` and `CLAUDE.md`. The first time you open Claude Code here, a hook installs the team plugin (`claude-md-management`, with the `claude-md-improver` skill) and keeps it updated. The hooks need Python 3.9 or later (`python3`, `python` or `py`), `claude` on the PATH and, on Windows, Git for Windows (Git Bash). If it shows an error, install it by hand from the repo folder:
+
+```bash
+claude plugin install claude-md-management@claude-plugins-official --scope local
+```
+
 COPY OF PROJECTRULES.MD, for updated rules please check projectRules.md file
 # Project Rules
 Last edited: 25-9-26 22:30pm by Baselga

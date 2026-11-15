@@ -42,7 +42,7 @@ Git does not store empty folders: a folder appears when its first file is commit
 | `CLAUDE.md` | What the project is, how to work, links to the rules. Short: under 200 lines | Rules of one subproject (they go in that subproject) |
 | `README.md` | Presentation of the repo for someone who arrives from GitHub | — |
 | `projectRules.md` | The rules. Changed only by the tech lead | — |
-| `.claude/settings.json` | Permissions and hooks shared by the whole team | Personal preferences (they go in `.claude/settings.local.json`, not committed) |
+| `.claude/settings.json` | Permissions, hooks and plugins shared by the whole team | Personal preferences (they go in `.claude/settings.local.json`, not committed) |
 | `.claude/hooks/` | Scripts the hooks run. Small, one job each | Code of the robot |
 | `.claude/skills/<name>/` | `SKILL.md` with the steps of one repeatable task | — |
 | `.claude/agents/` | One `.md` per subagent, with the minimum tools it needs | — |
@@ -99,6 +99,7 @@ Subprojects:
 | **A dependency** | The subproject that needs it | Justify it (rule of `projectRules.md`), pin the version and write it in the subproject `README.md` |
 | **A skill** | `.claude/skills/<name>/SKILL.md` | Only for a task the team repeats. Name in kebab-case. Mention it in the root `CLAUDE.md` |
 | **A hook** | `.claude/settings.json` + `.claude/hooks/` | Only for a rule that must never fail. It affects everyone: agree it with the team first |
+| **A plugin** | `enabledPlugins` in `.claude/settings.json` | Only from a marketplace the team trusts. Enabling it does not download it: the `ensureTeamPlugins.py` hook installs it for each person when they open Claude Code (local scope, so the committed file does not change) and keeps it updated. Agree it with the team first |
 | **A subagent** | `.claude/agents/<name>.md` | Give it the minimum tools (read-only if it only reviews) |
 | **A change to the contract** | The subproject `CLAUDE.md` and its code | Agree it with the people working on the subprojects that use it **before** changing the code |
 | **A new top-level folder** | — | Team decision. Update this document in the same change |
