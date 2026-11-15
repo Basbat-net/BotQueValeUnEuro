@@ -35,7 +35,6 @@ Commits are made by hand by the person, never by AI.
 - Do not commit, push, pull, merge, rebase, reset, revert, cherry-pick or create branches. A hook blocks these commands; if it stops one, do not look for another way to run it.
 - Read-only Git is fine: `status`, `log`, `diff`, `branch`.
 - When a change is ready, explain it and give the person the exact commands to run, following the commit rules of `projectRules.md`: one file per commit, at most 250 lines, compiled or run first.
-- Before a commit, offer to review the file with the `/rules-check` skill.
 
 ## How to work
 
