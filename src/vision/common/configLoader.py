@@ -96,7 +96,12 @@ def loadVisionConfig(filePath: str) -> tuple[bool, VisionConfig]:
     isRead, content = readJsonFile(filePath)
     if not isRead:
         return False, config
-    sections: dict = {"frameSource": config.frameSource, "calibrationBoard": config.calibrationBoard}
+    sections: dict = {
+        "frameSource": config.frameSource,
+        "calibrationBoard": config.calibrationBoard,
+        "aruco": config.aruco,
+        "viewer": config.viewer,
+    }
     topLevelValues: dict = {key: value for key, value in content.items() if key not in sections}
     isValid: bool = applyJsonValues(config, topLevelValues, "config")
     for sectionName, section in sections.items():
@@ -105,6 +110,8 @@ def loadVisionConfig(filePath: str) -> tuple[bool, VisionConfig]:
     config.calibrationFilePath = resolveVisionPath(config.calibrationFilePath)
     config.frameSource.videoPath = resolveVisionPath(config.frameSource.videoPath)
     config.frameSource.imagesFolder = resolveVisionPath(config.frameSource.imagesFolder)
+    # The recordings go outside the repo, so a path starting with ~ (home folder) is accepted
+    config.viewer.recordingsFolder = resolveVisionPath(os.path.expanduser(config.viewer.recordingsFolder))
     return isValid, config
 
 
