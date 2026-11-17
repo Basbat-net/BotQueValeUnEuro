@@ -19,6 +19,15 @@
     "subPixMaxIterations": 30,
     "subPixEpsilonPx": 0.001
   },
+  "aruco": {
+    "dictionaryName": "DICT_4X4_50",
+    "stoneMarkerId": 13,
+    "markerSideMm": 80.0,
+    "useSubPixRefinement": true
+  },
+  "viewer": {
+    "recordingsFolder": ""
+  },
   "calibrationFilePath": "config/cameraCalibration.json",
   "showWindow": true,
   "testMaxFrames": 300
