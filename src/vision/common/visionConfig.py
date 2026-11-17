@@ -57,11 +57,37 @@ class CalibrationBoardConfig:
 
 
 @dataclass
+class ArucoConfig:
+    """ArUco marker printed on the stones and how it is searched."""
+
+    # Name of an OpenCV predefined dictionary (cv2.aruco.DICT_...)
+    dictionaryName: str = "DICT_4X4_50"
+    # Every stone carries the same ID [2027 D.4]: it says "this is a stone", not which one
+    stoneMarkerId: int = 13
+    # Side of the black square, not of the white label. Only used for the pose (phase 2b).
+    # 80 mm is an estimate from the picture in the rules: measure the printed marker
+    markerSideMm: float = 80.0
+    # Refines the corners to sub-pixel precision: a bit slower, but the pose depends on it
+    useSubPixRefinement: bool = True
+
+
+@dataclass
+class ViewerConfig:
+    """Options of the viewer app. Never used on the robot."""
+
+    # Where the viewer saves videos and pictures. Empty means recording is turned off.
+    # Keep it outside the repo: videos are heavy and are not committed
+    recordingsFolder: str = ""
+
+
+@dataclass
 class VisionConfig:
     """Full configuration, loaded once at startup."""
 
     frameSource: FrameSourceConfig = field(default_factory=FrameSourceConfig)
     calibrationBoard: CalibrationBoardConfig = field(default_factory=CalibrationBoardConfig)
+    aruco: ArucoConfig = field(default_factory=ArucoConfig)
+    viewer: ViewerConfig = field(default_factory=ViewerConfig)
     calibrationFilePath: str = "config/cameraCalibration.json"
     # Debug windows are only used by the test apps, never on the robot
     showWindow: bool = True
