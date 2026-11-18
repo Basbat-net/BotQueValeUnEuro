@@ -1,7 +1,8 @@
 # Vision subproject: proposal
 
-> **Status: proposal** (2026-11-13). Not approved yet. No vision code is in the repo: it is uploaded only after the team accepts this document.
-> Rule references: `[2027 X]` = Eurobot 2027 game rules, official version 1.0.
+> **Status: proposal** (2026-11-13). Not approved yet. The vision code is in the `vision` branch, not in `main`.
+> **Update 2026-11-18:** the team decided that the images are processed **off the robot**, on a Jetson on the central platform. Sections 2, 6 and 7 are updated.
+> Rule references: `[2027 X]` = Eurobot 2027 game rules, official version 1.0 · `[Gen X]` = Eurobot senior general rules, official version 1.3.
 
 ## 1. Goal
 
@@ -18,13 +19,15 @@ What we know about the stones `[2027 D.4]`:
 
 | Question | Proposal | Why |
 |---|---|---|
-| Where is the camera? | **On the robot**, high and tilted down | Picking a stone needs to see it up close and without delay. A camera off the robot depends on radio |
-| What processes the images? | A small **computer on the robot**, which sends the result to the microcontroller | Marker detection with pose needs OpenCV; a microcontroller cannot run it fast enough |
+| Where is the camera? | **On the robot**, high and tilted down | Picking a stone needs to see it up close |
+| What processes the images? | A **Jetson on the central platform** `[Gen G.4]` (model not decided). The robot sends it the video by radio and it sends the result back to the microcontroller | Team decision (2026-11-18): more computing power, and less space and weight on the robot. Marker detection with pose needs OpenCV; a microcontroller cannot run it fast enough |
 | Main detector | **ArUco 13** | The marker is already on the stone. It gives exact position and orientation, with no training and no color tuning |
 | Support detector | **Color + shape** | Finds the stone when the marker is not visible (covered, or seen from a small face) |
 | Machine learning | Not for now | Most expensive in hours and does not give the pose. Only if tests show the two detectors are not enough |
 
-The camera model and the computer are **not decided**. The code must not depend on either.
+The camera, the Jetson model and what sends the video from the robot are **not decided**. The code must not depend on any of them.
+
+Processing off the robot adds three risks to measure early: the **round-trip delay** (robot → Jetson → microcontroller), **radio interference**, which is not a valid complaint at the competition `[Gen F.5]`, and the **video compression**, which can blur the marker at a distance. If the radio fails, the robot carries on with the table plan and odometry.
 
 At the start of a match the stones are where the plan says, so the robot can reach a quarry without vision. Vision matters in the last half metre and once the stones have been moved.
 
@@ -118,16 +121,16 @@ Each phase is tested and delivered on its own. If time runs out after phase 2, t
 | 2 | ArUco detector, alone | On recorded videos: % of frames detected per case, and position error against a tape measure |
 | 3 | Color + shape detector, alone | Same videos: % of stones found and false positives per frame |
 | 4 | Fusion and the black box | Never two stones where there is one; with the marker covered, the stone is still reported |
-| 5 | Output to the microcontroller | The microcontroller receives and understands the message; total delay measured |
-| 6 | On the robot, with the final camera and computer | Frames per second and delay measured on the real hardware |
+| 5 | Output to the microcontroller, by radio from the central platform | The microcontroller receives and understands the message; total delay measured |
+| 6 | On the Jetson, with the final camera and video sender on the robot | Frames per second and round-trip delay measured on the real hardware |
 
 Before phase 2, a set of test videos is recorded once (quarry, stone lying, standing, seen from a small face, covered, far, camera moving, different lights), with the real positions measured by hand. Every detector is tested against the same videos.
 
-State on 2026-11-13: phase 1 is written and tested locally, not uploaded.
+State on 2026-11-18: phase 1 and the first half of phase 2 (ArUco in pixels, plus a viewer to see what the detector finds) are in the `vision` branch.
 
 ## 7. What this proposal asks the team to accept
 
 1. **Python** for this subproject (section 3).
-2. **A computer on the robot** for vision, besides the microcontroller.
+2. ~~A computer on the robot for vision~~ Decided by the team on 2026-11-18: vision runs on a **Jetson on the central platform**. Still open: the Jetson model, what sends the video from the robot, ROS 2 or not, and who handles the radio link.
 3. **The contract** of section 4: fields, units and robot frame.
 4. That the **message to the microcontroller** (format and link) is agreed with whoever writes that side, before phase 5.
