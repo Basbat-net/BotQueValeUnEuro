@@ -3,14 +3,14 @@
 Diagrams of `src/vision/`, from the big picture to the details.
 They are written in [Mermaid](https://mermaid.js.org/): GitHub draws them, and so does VS Code with a Markdown preview that supports Mermaid.
 
-> Checked against the code on 2026-11-15 (end of phase 1, branch `vision`).
+> Checked against the code on 2026-11-17 (end of phase 2a, branch `vision`).
 > When `src/vision/` changes, this file changes in the same branch.
 
-**Legend:** green = exists today (phase 1) · grey and dashed = planned in a later phase · white = outside the vision code.
+**Legend:** green = exists today (phases 1 and 2a) · grey and dashed = planned in a later phase · white = outside the vision code.
 
 ## 1. The big picture
 
-One image goes in, one result goes out. The black box never opens the camera and never talks to the robot: `input/` and `output/` do that.
+One image goes in, one result goes out. The black box never opens the camera and never talks to the robot: `input/` and `output/` do that. The ArUco detector works in pixels (phase 2a); the viewer shows what it finds.
 
 ```mermaid
 flowchart LR
@@ -30,37 +30,40 @@ flowchart LR
     end
     fusion -- "VisionResult<br/>status + stones" --> publisher["output/<br/>resultPublisher"]
     publisher -- "message, format to agree" --> esp32["ESP32"]
+    aruco -. "ArucoDetection" .-> viewer["apps/viewer/<br/>shows what the detectors find"]
 
     classDef done fill:#c8e6c9,stroke:#2e7d32,color:#1b1b1b
     classDef planned fill:#eeeeee,stroke:#9e9e9e,stroke-dasharray:4 3,color:#555555
     classDef outside fill:#ffffff,stroke:#616161,color:#1b1b1b
-    class frameSource,loader,jsonFile done
-    class aruco,color,geometry,fusion,publisher planned
+    class frameSource,loader,jsonFile,aruco,viewer done
+    class color,geometry,fusion,publisher planned
     class camera,esp32 outside
 ```
 
 ## 2. Who imports whom today
 
-Generated from the code with `pyreverse` and redrawn. Both apps import the same three modules; nothing in `common/` or `input/` imports an app.
+Generated from the code with `pyreverse` and redrawn. The viewer is one box here (its insides are in section 8). Nothing in `common/`, `input/` or `aruco/` imports an app.
 
 ```mermaid
 flowchart TD
-    apps["apps/ - the programs you run<br/>frameSourceTestApp.py: checks the image source<br/>cameraCalibrationApp.py: calibrates the camera"]
+    apps["apps/ - phase 1 programs<br/>frameSourceTestApp.py: checks the image source<br/>cameraCalibrationApp.py: calibrates the camera"]
+    viewer["apps/viewer/<br/>visionViewerApp.py and its modules"]
     frameSource["input/frameSource.py<br/>gives the images"]
+    aruco["aruco/arucoStoneDetector.py<br/>finds the markers"]
     subgraph common ["common/"]
         loader["configLoader.py<br/>reads and checks the JSON files"]
         config["visionConfig.py<br/>parameters as dataclasses"]
         types["visionTypes.py<br/>the contract"]
+        detectionTypes["detectionTypes.py<br/>internal data of the detectors"]
     end
-    apps --> loader
-    apps --> frameSource
-    apps --> config
+    apps --> loader & frameSource & config
+    viewer --> loader & frameSource & config & aruco & detectionTypes
+    aruco --> detectionTypes & config
     loader --> config
-    frameSource --> config
-    frameSource --> types
+    frameSource --> config & types
 
     classDef done fill:#c8e6c9,stroke:#2e7d32,color:#1b1b1b
-    class apps,frameSource,loader,config,types done
+    class apps,viewer,frameSource,aruco,loader,config,types,detectionTypes done
 ```
 
 ## 3. The contract
@@ -118,11 +121,11 @@ flowchart TD
     appConfig --> loadConfig["loadVisionConfig(path)<br/>starts from the defaults"]
     loadConfig --> readJson{"readJsonFile:<br/>exists, readable,<br/>a JSON object?"}
     readJson -- "no" --> failed(["False: the app stops<br/>and logs the reason"])
-    readJson -- "yes" --> apply["applyJsonValues, 3 times:<br/>top level, frameSource,<br/>calibrationBoard"]
+    readJson -- "yes" --> apply["applyJsonValues, 5 times: top level,<br/>frameSource, calibrationBoard,<br/>aruco, viewer"]
     apply --> convert{"convertJsonValue, per key:<br/>known key and right type?"}
     convert -- "yes" --> stored["value stored"]
     convert -- "no" --> rejected["logged as an error,<br/>default kept"]
-    stored --> paths["resolveVisionPath:<br/>relative paths from vision/"]
+    stored --> paths["resolveVisionPath:<br/>relative paths from vision/,<br/>~ allowed in recordingsFolder"]
     rejected --> paths
     paths --> valid{"every value accepted?"}
     valid -- "no" --> failed
@@ -188,10 +191,56 @@ flowchart TD
     write -- "no" --> writeFailed(["error logged, not saved"])
 ```
 
+## 7. The ArUco detector
+
+`aruco/arucoStoneDetector.py`, phase 2a: everything in pixels. A wrong dictionary name or stone ID is found when the detector is created: `isReady` is `False` and `lastError` says why. It never draws: the viewer does.
+
+```mermaid
+flowchart TD
+    start(["detect(image)"]) --> ready{"isReady and the<br/>image not empty?"}
+    ready -- "no" --> empty(["ArucoDetection<br/>with empty lists"])
+    ready -- "yes" --> gray["cvtColor to gray<br/>if the image has colour"]
+    gray --> detectMarkers["detectMarkers:<br/>corners, ids, rejected"]
+    detectMarkers --> eachMarker
+    subgraph eachMarker ["repeated for each marker found"]
+        build["_buildMarker:<br/>center and mean side in px"] --> isStone{"id == stoneMarkerId?"}
+        isStone -- "yes" --> stone["stoneFaces"]
+        isStone -- "no" --> other["otherMarkers"]
+    end
+    eachMarker --> result(["ArucoDetection: stoneFaces, otherMarkers,<br/>rejectedCornersPx, processingTimeMs"])
+```
+
+## 8. The viewer
+
+`apps/viewer/`, run with `python3 -m vision.apps.viewer.visionViewerApp`. Each file has one job, so none goes over the 6 imports of the team rules. Only `viewerPipeline` knows the detectors and only `viewerDrawing` knows the drawings.
+
+```mermaid
+flowchart TD
+    app["visionViewerApp.py<br/>main()"] --> session["viewerSession.py<br/>the loop"]
+    pipeline["viewerPipeline.py<br/>runs the detectors, loads the calibration"]
+    screen["viewerScreen.py<br/>window, keys, snapshots"]
+    recorder["frameRecorder.py<br/>videos and pictures"]
+    drawing["viewerDrawing.py<br/>puts the picture together"]
+    arucoOverlay["arucoOverlay.py<br/>markers, threshold view"]
+    hud["hudOverlay.py<br/>status bar, help, colours"]
+    state["viewerState.py<br/>mode, keys, session numbers"]
+    session --> pipeline & screen
+    screen --> recorder & drawing
+    drawing --> arucoOverlay & hud
+    arucoOverlay --> hud
+    session & pipeline & screen & drawing & hud --> state
+```
+
+What `ViewerSession.run()` does in each loop, until `q`, `Esc` or the window is closed:
+
+1. If playing, or after `n` while paused: `FrameSource.read()` gives a new image. At the end of a video it pauses on the last one.
+2. `ViewerPipeline.process()` runs the detectors of the mode and returns a `ViewerFrame`. While paused the same image is processed again (so a change is seen at once) but counted once.
+3. `ViewerScreen.update()` records the raw image if `r` is on, draws, shows, reads a key with `applyKey` and returns `False` to quit.
+
 ## How to keep this file right
 
 - Change it in the same branch as the code it describes, and update the date at the top.
 - Check the imports of section 2 against the code. From `src/`, with `pylint` installed:
-  `pyreverse -o mmd -p vision --source-roots . vision/common/*.py vision/input/*.py vision/apps/*.py`
+  `pyreverse -o mmd -p vision --source-roots . vision/*/*.py vision/apps/viewer/*.py`
   (the files are listed one by one because the folders have no `__init__.py`).
 - Keep to the classic Mermaid diagrams (flowchart, sequence, class): GitHub may not draw the newest syntax.
