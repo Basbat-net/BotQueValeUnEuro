@@ -1,6 +1,7 @@
 # Vision subproject: proposal
 
 > **Status: proposal** (2026-11-13). Not approved yet. The vision code is in the `vision` branch, not in `main`.
+> **Update 2026-11-23:** phases 1 to 5 written and tested on synthetic scenes (see the end of section 6).
 > **Update 2026-11-18:** the team decided that the images are processed **off the robot**, on a Jetson on the central platform. Sections 2, 6 and 7 are updated.
 > Rule references: `[2027 X]` = Eurobot 2027 game rules, official version 1.0 · `[Gen X]` = Eurobot senior general rules, official version 1.3.
 
@@ -126,7 +127,15 @@ Each phase is tested and delivered on its own. If time runs out after phase 2, t
 
 Before phase 2, a set of test videos is recorded once (quarry, stone lying, standing, seen from a small face, covered, far, camera moving, different lights), with the real positions measured by hand. Every detector is tested against the same videos.
 
-State on 2026-11-18: phase 1 and the first half of phase 2 (ArUco in pixels, plus a viewer to see what the detector finds) are in the `vision` branch.
+State on 2026-11-23 (`vision` branch): phases 1 to 5 are written and tested on synthetic scenes, and phase 6 as far as it goes without hardware:
+
+- ArUco with its pose in mm, colour + shape, the fusion and the black box (`docs/vision/howDetectionWorks.md`, `howFusionWorks.md`).
+- The binary message to the robot, sent by UDP (Wi-Fi) or a serial port, the relay for the robot Raspberry and an MJPEG video sender (`howOutputWorks.md`, `visionMessage.md`).
+- A dashboard with a 3D twin of the stones, and the OpenCV viewer (`howDashboardWorks.md`).
+- 81 tests. On a synthetic demo the stones are placed within a few mm (median 4-10 mm), and the whole chain sender -> vision -> relay -> fake ESP32 delivers every message 14 ms after the picture arrives.
+
+Not tested yet, because it needs the hardware: the real camera and its calibration, the printed code, the camera mount, the brown of the official mat, the Wi-Fi and the Jetson.
+Radio proposal of 2026-11-23 (to agree): Wi-Fi at 5 GHz both ways, the result going from the robot Raspberry to the ESP32 by UART. Changing the radio only changes the config.
 
 ## 7. What this proposal asks the team to accept
 
