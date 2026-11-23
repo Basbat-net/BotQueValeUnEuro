@@ -1,7 +1,7 @@
 """Gives images to the vision module, one at a time.
 
-The rest of the code never knows if a frame comes from a live camera,
-a recorded video or a folder of pictures: that is chosen in the config.
+The rest of the code never knows if a frame comes from a live camera, a recorded video,
+a folder of pictures or a stream sent over the network: that is chosen in the config.
 """
 
 import os
@@ -32,6 +32,9 @@ class FrameSource:
         self.frameIndex = 0
         if self.config.mode == FrameSourceMode.CAMERA:
             self.isOpen = self.capture.open(self.config.cameraIndex)
+            # Asked before the size: some drivers only offer the big sizes at full rate in MJPG
+            if len(self.config.fourcc) == 4:
+                self.capture.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter.fourcc(*self.config.fourcc))
             # Only a request: the driver may choose another size (the real one is in frame.image.shape)
             self.capture.set(cv2.CAP_PROP_FRAME_WIDTH, self.config.widthPx)
             self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT, self.config.heightPx)
@@ -39,6 +42,12 @@ class FrameSource:
         elif self.config.mode == FrameSourceMode.VIDEO:
             self.isOpen = self.capture.open(self.config.videoPath)
             errorText = f"cannot open the video '{self.config.videoPath}'"
+        elif self.config.mode == FrameSourceMode.STREAM:
+            # Both waits are bounded: a dead sender must never block the program
+            timeouts: list[int] = [cv2.CAP_PROP_OPEN_TIMEOUT_MSEC, self.config.streamTimeoutMs,
+                                   cv2.CAP_PROP_READ_TIMEOUT_MSEC, self.config.streamTimeoutMs]
+            self.isOpen = self.capture.open(self.config.streamUrl, cv2.CAP_FFMPEG, timeouts)
+            errorText = f"cannot open the stream '{self.config.streamUrl}'"
         else:
             self.imagePaths = self._listImagePaths()
             self.isOpen = len(self.imagePaths) > 0
@@ -69,11 +78,17 @@ class FrameSource:
     def hasEnded(self) -> bool:
         """After read() returned False: True if a recorded source simply ran out of frames.
 
-        The end of a video or folder is normal. A live camera never ends: False means it failed.
+        The end of a video or folder is normal. A live camera or a stream never ends: False means it
+        failed (for a stream, the app can call reconnect()).
         """
         if self.config.mode == FrameSourceMode.IMAGES:
             return self.frameIndex >= len(self.imagePaths)
         return self.config.mode == FrameSourceMode.VIDEO
+
+    def reconnect(self) -> bool:
+        """Closes and opens the source again: after a stream was cut. False if it is still down."""
+        self.capture.release()
+        return self.open()
 
     def close(self) -> None:
         """Releases the camera or the video file."""
@@ -109,9 +124,9 @@ class FrameSource:
         return True, image
 
     def _computeTimestampMs(self) -> int:
-        """Capture time: system clock for the camera, position for recorded data."""
-        if self.config.mode == FrameSourceMode.CAMERA:
-            # Taken when the frame arrives, so it includes the delay of the camera driver
+        """Capture time: system clock for live sources, position for recorded data."""
+        if self.config.mode in (FrameSourceMode.CAMERA, FrameSourceMode.STREAM):
+            # Taken when the frame arrives, so it includes the delay of the camera driver (and of the network)
             return int(time.time() * 1000)
         if self.config.mode == FrameSourceMode.VIDEO:
             return int(self.capture.get(cv2.CAP_PROP_POS_MSEC))
