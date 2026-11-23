@@ -6,7 +6,11 @@
     "imagesFolder": "",
     "widthPx": 1280,
     "heightPx": 720,
-    "imagesPeriodMs": 100
+    "fourcc": "MJPG",
+    "imagesPeriodMs": 100,
+    "streamUrl": "",
+    "streamTimeoutMs": 3000,
+    "reconnectDelayMs": 1000
   },
   "calibrationBoard": {
     "innerCornersX": 9,
@@ -23,10 +27,84 @@
     "dictionaryName": "DICT_4X4_50",
     "stoneMarkerId": 13,
     "markerSideMm": 80.0,
-    "useSubPixRefinement": true
+    "useSubPixRefinement": true,
+    "markerLongAxis": "x"
+  },
+  "stone": {
+    "lengthMm": 320.0,
+    "widthMm": 110.0,
+    "labelSideMm": 104.0
+  },
+  "cameraMount": {
+    "isMeasured": false,
+    "xMm": 0.0,
+    "yMm": 0.0,
+    "zMm": 300.0,
+    "pitchDeg": 30.0,
+    "yawDeg": 0.0,
+    "rollDeg": 0.0
+  },
+  "color": {
+    "hueMin": 5,
+    "hueMax": 25,
+    "saturationMin": 60,
+    "saturationMax": 255,
+    "valueMin": 60,
+    "valueMax": 255,
+    "labelSaturationMax": 60,
+    "labelBrightnessRatio": 1.15,
+    "labelValueMin": 80,
+    "blurKernelPx": 5,
+    "cleanKernelPx": 7,
+    "minAreaPx": 600,
+    "maxBottomEdgeSlope": 1.0,
+    "edgeSimplifyMm": 15.0,
+    "minSolidity": 0.8,
+    "minLabelRatio": 0.02,
+    "minHeightMm": 60.0,
+    "maxStackLevels": 3,
+    "sideTolerance": 0.35,
+    "minScore": 0.45,
+    "pickHalfSidePx": 4,
+    "pickHueMargin": 8,
+    "pickSaturationMargin": 70,
+    "pickValueMargin": 80
+  },
+  "fusion": {
+    "sameStoneDistanceMm": 60.0,
+    "colorMatchDistanceMm": 150.0,
+    "ambiguityErrorRatio": 0.25,
+    "ambiguityMinAngleDeg": 10.0,
+    "arucoConfidence": 0.9,
+    "ambiguousConfidence": 0.7,
+    "extraFaceBonus": 0.05,
+    "colorAgreementBonus": 0.05,
+    "colorConfidenceMax": 0.5,
+    "pieceYawToleranceDeg": 15.0,
+    "pieceAlongFraction": 0.8
+  },
+  "output": {
+    "transport": "none",
+    "udpHost": "127.0.0.1",
+    "udpPort": 5005,
+    "serialPort": "/dev/ttyUSB0",
+    "serialBaudRate": 115200,
+    "serialWriteTimeoutMs": 50,
+    "maxStones": 32,
+    "statsIntervalMs": 2000
+  },
+  "sender": {
+    "port": 8080,
+    "jpegQuality": 80,
+    "maxFramesPerSecond": 30.0
   },
   "viewer": {
-    "recordingsFolder": ""
+    "recordingsFolder": "",
+    "playbackFramesPerSecond": 30.0,
+    "twinSmoothing": 0.5,
+    "twinMatchDistanceMm": 150.0,
+    "twinGhostSeconds": 1.0,
+    "twinViewConeDepthMm": 400.0
   },
   "calibrationFilePath": "config/cameraCalibration.json",
   "showWindow": true,
