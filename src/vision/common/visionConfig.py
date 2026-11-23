@@ -4,12 +4,16 @@ The values live in config/visionConfig.json, never in the code.
 The defaults below are only used when a key is missing in the file.
 Relative paths in the file are resolved from the vision/ folder.
 The camera calibration lives in its own file, written by the calibration app.
+The sections of the detection and of the output live in detectionConfig.py and outputConfig.py.
 """
 
 from dataclasses import dataclass, field
 from enum import Enum
 
 import numpy as np
+
+from vision.common.detectionConfig import CameraMountConfig, ColorConfig, FusionConfig, StoneConfig
+from vision.common.outputConfig import OutputConfig, SenderConfig
 
 
 class FrameSourceMode(Enum):
@@ -18,6 +22,15 @@ class FrameSourceMode(Enum):
     CAMERA = "camera"
     VIDEO = "video"
     IMAGES = "images"
+    # Images sent by the robot over the network (MJPEG over HTTP, RTSP...): a cut is a failure, not an end
+    STREAM = "stream"
+
+
+class MarkerAxis(Enum):
+    """Axis of the printed code that runs along the 320 mm side of the stone."""
+
+    X = "x"
+    Y = "y"
 
 
 @dataclass
@@ -31,8 +44,17 @@ class FrameSourceConfig:
     # Size asked to the camera. Only a request: the driver may give another one
     widthPx: int = 1280
     heightPx: int = 720
+    # Camera mode: format asked to a USB camera, 4 letters. "MJPG" lets most webcams give 30 images/s
+    # at 1280 x 720 (the default raw format gave 10 on the team PC). Empty keeps the driver default
+    fourcc: str = "MJPG"
     # Time between two pictures when reading a folder (there is no real clock)
     imagesPeriodMs: int = 100
+    # Stream mode: address of the video sender, for example http://robot.local:8080/video
+    streamUrl: str = ""
+    # Stream mode: opening or reading takes at most this long, so a dead stream never blocks
+    streamTimeoutMs: int = 3000
+    # Stream mode: after a failed reconnection, wait this long before the next try
+    reconnectDelayMs: int = 1000
 
 
 @dataclass
@@ -69,6 +91,8 @@ class ArucoConfig:
     markerSideMm: float = 80.0
     # Refines the corners to sub-pixel precision: a bit slower, but the pose depends on it
     useSubPixRefinement: bool = True
+    # In the picture of the rules (Figure 5) the x axis of the code runs along the long side, on every face
+    markerLongAxis: MarkerAxis = MarkerAxis.X
 
 
 @dataclass
@@ -78,6 +102,15 @@ class ViewerConfig:
     # Where the viewer saves videos and pictures. Empty means recording is turned off.
     # Keep it outside the repo: videos are heavy and are not committed
     recordingsFolder: str = ""
+    # Dashboard: a recorded video plays at this rate (0 = as fast as it can be processed)
+    playbackFramesPerSecond: float = 30.0
+    # Dashboard 3D twin, only for drawing (the robot gets the raw stones): how much of the old position
+    # stays each image (0 = raw), how far a stone may jump and still be the same, how long a lost one stays
+    twinSmoothing: float = 0.5
+    twinMatchDistanceMm: float = 150.0
+    twinGhostSeconds: float = 1.0
+    # Length of the camera cone drawn in the 3D twin
+    twinViewConeDepthMm: float = 400.0
 
 
 @dataclass
@@ -88,6 +121,12 @@ class VisionConfig:
     calibrationBoard: CalibrationBoardConfig = field(default_factory=CalibrationBoardConfig)
     aruco: ArucoConfig = field(default_factory=ArucoConfig)
     viewer: ViewerConfig = field(default_factory=ViewerConfig)
+    stone: StoneConfig = field(default_factory=StoneConfig)
+    cameraMount: CameraMountConfig = field(default_factory=CameraMountConfig)
+    color: ColorConfig = field(default_factory=ColorConfig)
+    fusion: FusionConfig = field(default_factory=FusionConfig)
+    output: OutputConfig = field(default_factory=OutputConfig)
+    sender: SenderConfig = field(default_factory=SenderConfig)
     calibrationFilePath: str = "config/cameraCalibration.json"
     # Debug windows are only used by the test apps, never on the robot
     showWindow: bool = True
