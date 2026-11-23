@@ -7,7 +7,7 @@ import time
 from dataclasses import dataclass, field
 from enum import Enum
 
-from vision.common.detectionTypes import ArucoDetection
+from vision.common.detectionTypes import ArucoDetection, PipelineOptions, ProjectedStone, VisionDetails
 
 
 class ViewerMode(Enum):
@@ -44,10 +44,10 @@ class SessionStats:
 class ViewerFrame:
     """Results of one image, ready to be drawn."""
 
-    aruco: ArucoDetection = field(default_factory=ArucoDetection)
-    # Text about the calibration for the status bar, and if it can be used with this image
-    calibrationText: str = ""
-    isCalibrationUsable: bool = False
+    # Everything the black box found in this image (detections, stones, calibration state)
+    details: VisionDetails = field(default_factory=VisionDetails)
+    # The stones drawn back on the picture, when the camera is calibrated
+    projectedStones: list[ProjectedStone] = field(default_factory=list)
 
 
 @dataclass
@@ -60,6 +60,7 @@ class ViewerState:
     isStepRequested: bool = False
     showRejected: bool = False
     showThreshold: bool = False
+    showMask: bool = False
     showHelp: bool = False
     isRecording: bool = False
     # Last message for the user (snapshot saved, end of the video...), shown in the status bar
@@ -87,6 +88,10 @@ def applyKey(state: ViewerState, keyCode: int) -> ViewerAction:
         state.showRejected = not state.showRejected
     elif key == "t":
         state.showThreshold = not state.showThreshold
+        state.showMask = False
+    elif key == "m":
+        state.showMask = not state.showMask
+        state.showThreshold = False
     elif key == "h":
         state.showHelp = not state.showHelp
     elif key == "c":
@@ -97,6 +102,12 @@ def applyKey(state: ViewerState, keyCode: int) -> ViewerAction:
             key, ViewerAction.NONE
         )
     return ViewerAction.NONE
+
+
+def buildPipelineOptions(mode: ViewerMode) -> PipelineOptions:
+    """Which detectors the black box runs in each mode of the viewer."""
+    return PipelineOptions(useAruco=mode in (ViewerMode.ARUCO, ViewerMode.BOTH),
+                           useColor=mode in (ViewerMode.COLOR, ViewerMode.BOTH))
 
 
 def updateStats(stats: SessionStats, detection: ArucoDetection) -> None:
