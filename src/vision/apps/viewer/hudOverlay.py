@@ -15,7 +15,7 @@ from vision.apps.viewer.viewerState import (
     ViewerState,
     stoneRatePercent,
 )
-from vision.common.detectionTypes import ArucoDetection
+from vision.common.detectionTypes import ArucoDetection, VisionDetails
 
 
 @dataclass
@@ -32,6 +32,9 @@ class DrawStyle:
     neutralColor: tuple[int, int, int] = (170, 170, 170)
     # The first corner of a marker (top-left of the printed code), to see how it reads the rotation
     cornerZeroColor: tuple[int, int, int] = (255, 0, 255)
+    # Stones by source: ArUco uses goodColor, colour only is orange, both detectors is cyan
+    colorStoneColor: tuple[int, int, int] = (0, 140, 255)
+    bothColor: tuple[int, int, int] = (230, 200, 0)
 
 
 def buildDrawStyle(imageWidthPx: int) -> DrawStyle:
@@ -61,19 +64,23 @@ def buildStatusLines(viewerFrame: ViewerFrame, state: ViewerState, image: np.nda
     """The lines of the status bar, each one with its color. Always the same number of lines."""
     imageHeight, imageWidth = image.shape[:2]
     stats: SessionStats = state.stats
-    aruco: ArucoDetection = viewerFrame.aruco
-    detectorText: str = f"aruco {aruco.processingTimeMs:.1f} ms" if state.mode != ViewerMode.COLOR else "no aruco"
-    colorText: str = " | color: phase 3" if state.mode != ViewerMode.ARUCO else ""
+    details: VisionDetails = viewerFrame.details
+    aruco: ArucoDetection = details.aruco
+    arucoText: str = f"aruco {aruco.processingTimeMs:.1f} ms" if state.mode != ViewerMode.COLOR else "no aruco"
+    colorText: str = f"color {details.color.processingTimeMs:.1f} ms" if state.mode != ViewerMode.ARUCO else "no color"
     otherIds: list[int] = sorted({marker.markerId for marker in aruco.otherMarkers})
     sideText: str = f", side {stats.minSidePx:.0f}-{stats.maxSidePx:.0f} px" if stats.framesWithStone > 0 else ""
     stateText: str = ("PAUSED (space: play, n: next)  " if state.isPaused else "") + ("REC  " if state.isRecording else "")
-    calibrationColor: tuple[int, int, int] = style.goodColor if viewerFrame.isCalibrationUsable else style.warningColor
+    isPoseUsable: bool = details.isCalibrationUsable and details.isMountMeasured
+    calibrationColor: tuple[int, int, int] = style.goodColor if isPoseUsable else style.warningColor
+    mountText: str = "" if details.isMountMeasured else " | camera mount NOT MEASURED: positions are provisional"
     stateColor: tuple[int, int, int] = style.errorColor if state.isRecording else style.warningColor
-    sourceText: str = f"{state.mode.value} | {stats.framesPerSecond:.1f} fps | {detectorText}"
-    detectionText: str = f"now: {len(aruco.stoneFaces)} stone faces, other ids {otherIds}"
+    sourceText: str = f"{state.mode.value} | {stats.framesPerSecond:.1f} fps | {arucoText} | {colorText}"
+    detectionText: str = (f"now: {len(details.stones)} stones ({details.result.status.name}) | "
+                          f"{len(aruco.stoneFaces)} codes, {len(details.color.candidates)} blobs, other ids {otherIds}")
     return [
-        (f"{sourceText} | {imageWidth}x{imageHeight}{colorText} | h: help", style.textColor),
-        (viewerFrame.calibrationText, calibrationColor),
+        (f"{sourceText} | {imageWidth}x{imageHeight} | h: help", style.textColor),
+        (details.calibrationText + mountText, calibrationColor),
         (f"{detectionText}, {len(aruco.rejectedCornersPx)} rejected", style.textColor),
         (f"session: stone seen in {stoneRatePercent(stats):.0f}% of {stats.processedFrames} frames{sideText}",
          style.textColor),
@@ -98,8 +105,9 @@ def drawHelp(image: np.ndarray, style: DrawStyle) -> None:
         "1 ArUco   2 color   3 both",
         "space    pause / play",
         "n        next frame (when paused)",
-        "x        show rejected candidates",
+        "x        show rejected candidates (ArUco and color)",
         "t        threshold view (what ArUco sees)",
+        "m        mask view (what color takes as cardboard)",
         "r        start / stop recording",
         "s        snapshot (raw + annotated)",
         "c        reset session numbers",
