@@ -12,7 +12,7 @@ import sys
 
 import numpy as np
 
-from vision.common.visionConfig import CameraCalibration, FrameSourceMode, VisionConfig
+from vision.common.visionConfig import CameraCalibration, VisionConfig
 
 
 def resolveVisionPath(path: str) -> str:
@@ -47,11 +47,14 @@ def readJsonFile(filePath: str) -> tuple[bool, dict]:
 
 def convertJsonValue(value: object, defaultValue: object) -> tuple[bool, object]:
     """Checks a JSON value against the type of the default it replaces. Returns (isValid, value)."""
-    # FrameSourceMode is the only Enum of the config so far: the JSON holds its text value
-    if isinstance(defaultValue, FrameSourceMode):
-        allowedTexts: list[str] = [mode.value for mode in FrameSourceMode]
+    # An Enum (frame source mode, transport...) is written in the JSON as its text value.
+    # Every Enum class has __members__: checking it avoids one more import (team rule: at most 6)
+    if hasattr(type(defaultValue), "__members__"):
+        enumType: type = type(defaultValue)
+        # The type checker cannot know enumType is an Enum class (checked just above), hence the ignore
+        allowedTexts: list[object] = [member.value for member in enumType]  # pyright: ignore[reportGeneralTypeIssues]
         if value in allowedTexts:
-            return True, FrameSourceMode(value)
+            return True, enumType(value)
         return False, value
     # bool goes before int because in Python True is also an int
     if isinstance(defaultValue, bool) or isinstance(value, bool):
@@ -101,6 +104,12 @@ def loadVisionConfig(filePath: str) -> tuple[bool, VisionConfig]:
         "calibrationBoard": config.calibrationBoard,
         "aruco": config.aruco,
         "viewer": config.viewer,
+        "stone": config.stone,
+        "cameraMount": config.cameraMount,
+        "color": config.color,
+        "fusion": config.fusion,
+        "output": config.output,
+        "sender": config.sender,
     }
     topLevelValues: dict = {key: value for key, value in content.items() if key not in sections}
     isValid: bool = applyJsonValues(config, topLevelValues, "config")
@@ -115,17 +124,26 @@ def loadVisionConfig(filePath: str) -> tuple[bool, VisionConfig]:
     return isValid, config
 
 
-def loadAppConfig() -> tuple[bool, VisionConfig]:
+def chooseConfigPath(argumentPath: str = "") -> str:
+    """The config file given by the app, else the first command line argument, else the default one."""
+    if argumentPath != "":
+        return argumentPath
+    # Options such as --screenshot are not a config path
+    if len(sys.argv) > 1 and not sys.argv[1].startswith("-"):
+        return sys.argv[1]
+    return resolveVisionPath("config/visionConfig.json")
+
+
+def loadAppConfig(configPath: str = "") -> tuple[bool, VisionConfig]:
     """Common start of every app: logging, config file and screen check.
 
-    The first command line argument, if given, is another config file.
+    configPath empty means: the first command line argument, or config/visionConfig.json.
     """
     logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
-    defaultPath: str = resolveVisionPath("config/visionConfig.json")
-    configPath: str = sys.argv[1] if len(sys.argv) > 1 else defaultPath
-    isLoaded, config = loadVisionConfig(configPath)
+    chosenPath: str = chooseConfigPath(configPath)
+    isLoaded, config = loadVisionConfig(chosenPath)
     if not isLoaded:
-        logging.error("could not use the config file: %s", configPath)
+        logging.error("could not use the config file: %s", chosenPath)
         return False, config
     # On Linux without a screen (the robot over SSH) cv2.imshow kills the program
     hasScreen: bool = os.environ.get("DISPLAY", "") != "" or os.environ.get("WAYLAND_DISPLAY", "") != ""
@@ -183,6 +201,50 @@ def saveCameraCalibration(filePath: str, calibration: CameraCalibration) -> bool
         # Recovery only: a missing or read-only folder must not end the program
         with open(filePath, "w", encoding="utf-8") as jsonFile:
             json.dump(content, jsonFile, indent=2)
+    except OSError as error:
+        logging.error("could not write %s: %s", filePath, error)
+        return False
+    return True
+
+
+def saveVisionConfig(filePath: str, config: VisionConfig) -> bool:
+    """Writes a whole config as JSON: each section (a dataclass) as its fields, each mode (Enum) as its text."""
+    temporaryPath: str = filePath + ".tmp"
+    try:
+        # Recovery only: a full disk or a read-only folder must not end the program.
+        # Written aside and then renamed: a failure halfway never leaves a broken config
+        with open(temporaryPath, "w", encoding="utf-8") as jsonFile:
+            json.dump(config, jsonFile, indent=2,
+                      default=lambda value: value.value if hasattr(type(value), "__members__") else vars(value))
+            jsonFile.write("\n")
+        os.replace(temporaryPath, filePath)
+    except OSError as error:
+        logging.error("could not write %s: %s", filePath, error)
+        return False
+    return True
+
+
+def saveConfigSection(filePath: str, sectionName: str, values: dict) -> bool:
+    """Replaces some keys of one section of a config file and keeps everything else as it was.
+
+    Used by the dashboard to save the colour range measured on the table. False if it cannot.
+    """
+    isRead, content = readJsonFile(filePath)
+    if not isRead:
+        return False
+    section: object = content.get(sectionName, {})
+    if not isinstance(section, dict):
+        logging.error("%s: section '%s' is not a JSON object", filePath, sectionName)
+        return False
+    section.update(values)
+    content[sectionName] = section
+    temporaryPath: str = filePath + ".tmp"
+    try:
+        # Recovery only: a read-only file must not end the program. Written aside, then renamed
+        with open(temporaryPath, "w", encoding="utf-8") as jsonFile:
+            json.dump(content, jsonFile, indent=2)
+            jsonFile.write("\n")
+        os.replace(temporaryPath, filePath)
     except OSError as error:
         logging.error("could not write %s: %s", filePath, error)
         return False
